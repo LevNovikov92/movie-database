@@ -13,14 +13,6 @@ dependencies {
 }
 
 dependencies {
-    implementation libs.retrofit
-    implementation libs.retrofitRxjavaAdapter
-    implementation libs.retrofitConverterGson
-    implementation libs.okHttp
-    implementation libs.okhttpLoggingInterceptor
-}
-
-dependencies {
     kapt libs.daggerCompiler
 }
 
