@@ -10,6 +10,7 @@ dependencies {
     implementation libs.rxAndroid
     implementation libs.kotlin
     implementation libs.dagger
+    implementation libs.retrofit
 }
 
 dependencies {

@@ -1,7 +1,8 @@
 package com.levnovikov.core_network
 
-import okhttp3.Interceptor
+import com.levnovikov.core_network.interceptors.AuthInterceptor
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import javax.inject.Inject
 
 /**
@@ -9,11 +10,15 @@ import javax.inject.Inject
  * Date: 12/3/18.
  */
 
-internal class HttpClientBuilder @Inject constructor() {
+class HttpClientBuilder @Inject constructor(
+        private val authInterceptor: AuthInterceptor,
+        private val loggingInterceptor: HttpLoggingInterceptor
+) {
 
-    fun build(interceptors: List<Interceptor>): OkHttpClient {
-        return OkHttpClient.Builder().apply {
-            interceptors.forEach { this.addInterceptor(it) }
-        }.build()
+    fun build(): OkHttpClient {
+        return OkHttpClient.Builder()
+                .addInterceptor(loggingInterceptor)
+                .addInterceptor(authInterceptor)
+                .build()
     }
 }

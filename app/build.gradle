@@ -18,10 +18,18 @@ dependencies {
     implementation libs.rxAndroid
     implementation libs.kotlin
     implementation libs.dagger
+    implementation libs.gson
+    implementation libs.retrofit
+    implementation libs.okhttpLoggingInterceptor
 }
 
 dependencies {
     kapt libs.daggerCompiler
+}
+
+dependencies {
+    implementation project(":core-network")
+    implementation project(":core-api")
 }
 
 dependencies {
