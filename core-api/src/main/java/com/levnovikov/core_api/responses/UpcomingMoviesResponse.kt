@@ -1,6 +1,6 @@
 package com.levnovikov.core_api.responses
 
-import com.levnovikov.core_api.entity.Movie
+import com.levnovikov.core_api.entities.Movie
 
 /**
  * Author: lev.novikov
