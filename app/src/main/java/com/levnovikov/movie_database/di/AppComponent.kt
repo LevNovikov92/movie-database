@@ -1,6 +1,10 @@
 package com.levnovikov.movie_database.di
 
 import android.content.Context
+import com.levnovikov.core_api.MovieApiModule
+import com.levnovikov.data_movies.MoviesRepo
+import com.levnovikov.data_movies.di.MovieDataModule
+import com.levnovikov.feature_movies_list.main_screen.di.MainComponentDependencies
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
@@ -16,8 +20,8 @@ import javax.inject.Singleton
 const val APP_CONTEXT = "APP_CONTEXT"
 
 @Singleton
-@Component(modules = [AppComponent.AppModule::class, RetrofitModule::class])
-interface AppComponent {
+@Component(modules = [AppComponent.AppModule::class, RetrofitModule::class, MovieDataModule::class])
+interface AppComponent : MainComponentDependencies {
 
     @Module
     class AppModule {
@@ -35,6 +39,6 @@ interface AppComponent {
         fun context(context: Context): Builder
     }
 
-    fun context(): Context
-    fun retrofit(): Retrofit
+    override fun context(): Context
+    override fun moviesRepo(): MoviesRepo
 }

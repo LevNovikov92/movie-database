@@ -17,6 +17,7 @@ dependencies {
     implementation libs.rxJava
     implementation libs.rxAndroid
     implementation libs.kotlin
+    implementation libs.kotlinReflection
     implementation libs.dagger
     implementation libs.gson
     implementation libs.retrofit
@@ -30,6 +31,9 @@ dependencies {
 dependencies {
     implementation project(":core-network")
     implementation project(":core-api")
+    implementation project(":data-movies")
+    implementation project(":feature-movies_list")
+    implementation project(":core-common")
 }
 
 dependencies {

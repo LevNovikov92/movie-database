@@ -1,13 +1,13 @@
-package com.levnovikov.movie_database.main_screen
+package com.levnovikov.feature_movies_list.main_screen
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import com.levnovikov.core_api.MovieApi
-import com.levnovikov.movie_database.R
-import com.levnovikov.movie_database.getComponent
-import com.levnovikov.movie_database.main_screen.di.DaggerMainComponent
-import com.levnovikov.movie_database.main_screen.di.MainComponent
+import com.levnovikov.core_common.getComponent
+import com.levnovikov.data_movies.MoviesRepo
+import com.levnovikov.feature_movies_list.R
+import com.levnovikov.feature_movies_list.main_screen.di.DaggerMainComponent
+import com.levnovikov.feature_movies_list.main_screen.di.MainComponent
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -21,11 +21,11 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    @Inject lateinit var api: MovieApi
+    @Inject lateinit var moviesRepo: MoviesRepo
 
     private fun testCall() {
         component.inject(this)
-        api.getUpcomingMovies(1)
+        moviesRepo.getLatestMovies(1)
                 .subscribe({ response ->
                     Log.i(">>>>", response.toString())
                 }, { e ->

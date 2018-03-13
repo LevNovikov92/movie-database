@@ -59,6 +59,7 @@ ext {
             rxJava                    : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
             rxAndroid                 : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
             kotlin                    : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlinVersion",
+            kotlinReflection          : "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion",
             timber                    : "com.jakewharton.timber:timber:$timberVersion",
             leakCanary                : "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion",
             leakCanaryNoOp            : "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion",

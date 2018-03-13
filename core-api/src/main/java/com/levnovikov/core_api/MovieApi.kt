@@ -14,7 +14,7 @@ import retrofit2.http.Query
 
 interface MovieApi {
 
-    @GET("movie/upcoming")
+    @GET("movie/now_playing")
     fun getUpcomingMovies(@Query("page") page: Int): Single<UpcomingMoviesResponse>
 
     @GET("/movie/{movie_id}")

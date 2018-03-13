@@ -11,7 +11,6 @@ import retrofit2.Retrofit
 
 @Module
 class MovieApiModule {
-
     @Provides
     fun provideMovieApi(retrofit: Retrofit): MovieApi = retrofit.create(MovieApi::class.java)
 }
