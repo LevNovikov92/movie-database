@@ -5,12 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <com.levnovikov.feature_movies_list.main_screen.date_selector.DateSelectorView
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:text="Some date"
-        android:gravity="center"
-        android:layout_gravity="center"/>
+        android:background="@color/colorAccent">
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/all_dates"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center"/>
+
+        <ImageView
+            android:id="@+id/clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_gravity="center_vertical|end"
+            app:srcCompat="@drawable/ic_clear_black_24dp"/>
+
+    </com.levnovikov.feature_movies_list.main_screen.date_selector.DateSelectorView>
 
     <com.levnovikov.feature_movies_list.main_screen.movies_list.MoviesListView
         android:layout_width="match_parent"

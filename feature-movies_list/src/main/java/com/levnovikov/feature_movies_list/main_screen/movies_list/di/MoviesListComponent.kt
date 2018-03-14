@@ -30,8 +30,6 @@ interface MoviesListComponent {
     interface MoviesListModule {
         @Binds fun bindMovieLoader(presenter: MoviesListPresenter): MovieVOLoader
         @Binds fun bindListView(view: MoviesListView): ListView
-        @Binds fun bindDateStreamProvider(impl: MoviesScreenRepo): DateStreamProvider
-        @Binds fun bindOnDateSelected(impl: MoviesScreenRepo): OnDateSelectedListener
     }
 
     @Subcomponent.Builder

@@ -32,10 +32,10 @@ class MoviesListActivity : AppCompatActivity(), ComponentProvider {
                 .build()
         component.inject(this)
 
-        Single.just(true).delay(10, TimeUnit.SECONDS) //TODO remove
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    presenter.onDateSelected(GregorianCalendar().apply { set(2018, 2, 9) }.time) }, {})
+//        Single.just(true).delay(10, TimeUnit.SECONDS) //TODO remove
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe({
+//                    presenter.onDateSelected(GregorianCalendar().apply { set(2018, 2, 9) }.time) }, {})
     }
 
     @Suppress("UNCHECKED_CAST")

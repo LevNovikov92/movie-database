@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">feature-movies_list</string>
+    <string name="all_dates">All dates</string>
 </resources>

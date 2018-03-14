@@ -23,14 +23,15 @@ class MoviesListPresenter @Inject constructor(
         dateStreamProvider: DateStreamProvider
 ) : MovieVOLoader {
 
+    private val endlessScrollHandler: EndlessScrollHandler = EndlessScrollHandler(adapter, view, this)
+
     init {
-        dateStreamProvider.getDateStream()
+        dateStreamProvider.getDateStream() //TODO unsubscribe
                 .subscribe({
                     endlessScrollHandler.reloadData(if (it.isPresent) it.get() else null)
                 }, { TODO() })
     }
 
-    private val endlessScrollHandler: EndlessScrollHandler = EndlessScrollHandler(adapter, view, this)
 
     override fun loadVO(page: Int, date: Date?): Single<Pair<List<MovieVO>, PagerMetadata>> =
             moviesRepo.getMoviesByDate(page, date)
@@ -61,15 +62,14 @@ class EndlessScrollHandler @Inject constructor(
     private var totalPages = 1
     private var loadingInProgress = false
 
-    init {
-        reloadData(null)
-    }
-
     private var date: Date? = null
 
     fun reloadData(date: Date?) {
         this.date = date
         adapter.clearData()
+        currentPage = 0
+        totalPages = 1
+        loadingInProgress = false
         loadNextPage()
     }
 
