@@ -6,3 +6,5 @@ package com.levnovikov.data_movies.entities
  */
 
 data class Movie(val id: Int, val title: String)
+
+data class PagerMetadata(val totalPages: Int)

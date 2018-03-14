@@ -66,6 +66,10 @@ ext {
             recyclerView              : "com.android.support:recyclerview-v7:$recyclerViewVersion",
     ]
 
+    aptLibs = [
+            databinding               : "com.android.databinding:compiler:$gradlePluginVersion"
+    ]
+
     testLibs = [
             jUnit                    : "junit:junit:${jUnitVersion}",
             mockito                  : "org.mockito:mockito-core:${mockitoVersion}",

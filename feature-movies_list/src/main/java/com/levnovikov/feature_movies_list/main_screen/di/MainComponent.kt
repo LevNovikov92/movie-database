@@ -2,13 +2,15 @@ package com.levnovikov.feature_movies_list.main_screen.di
 
 import android.app.Activity
 import android.content.Context
+import android.view.LayoutInflater
 import com.levnovikov.data_movies.MoviesRepo
-import com.levnovikov.data_movies.di.MovieDataModule
-import com.levnovikov.feature_movies_list.main_screen.MainActivity
+import com.levnovikov.feature_movies_list.main_screen.MoviesListActivity
+import com.levnovikov.feature_movies_list.main_screen.movies_list.MoviesListView
+import com.levnovikov.feature_movies_list.main_screen.movies_list.di.MoviesListComponent
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
-import retrofit2.Retrofit
+import dagger.Provides
 import javax.inject.Scope
 
 /**
@@ -22,7 +24,6 @@ annotation class MainScope
 
 interface MainComponentDependencies {
     fun context(): Context
-    fun retrofit(): Retrofit
     fun moviesRepo(): MoviesRepo
 }
 
@@ -32,9 +33,11 @@ interface MainComponentDependencies {
 ])
 interface MainComponent {
 
-    @Module
+    @Module(subcomponents = [MoviesListComponent::class])
     class MainModule {
-
+        @Provides
+        fun provideLayoutInflater(activity: Activity): LayoutInflater =
+                activity.layoutInflater
     }
 
     @Component.Builder
@@ -46,5 +49,7 @@ interface MainComponent {
         fun activity(activity: Activity): Builder
     }
 
-    fun inject(mainActivity: MainActivity)
+    fun inject(moviesListActivity: MoviesListActivity)
+
+    fun moviesListBuilder(): MoviesListComponent.Builder
 }

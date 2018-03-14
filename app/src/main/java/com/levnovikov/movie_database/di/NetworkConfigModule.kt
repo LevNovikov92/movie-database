@@ -13,7 +13,7 @@ import javax.inject.Named
  */
 
 @Module(includes = [NetworkModule::class])
-class RetrofitModule {
+class NetworkConfigModule {
 
     @Provides
     @Named(BASE_URL)
