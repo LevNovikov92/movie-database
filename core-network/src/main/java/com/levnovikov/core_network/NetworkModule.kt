@@ -35,5 +35,5 @@ class NetworkModule {
     fun provideRetrofit(builder: RetrofitBuilder): Retrofit = builder.build()
 
     @Provides
-    fun provideGson(): Gson = GsonBuilder().create()
+    fun provideGson(): Gson = GsonBuilder().setDateFormat("yyyy-MM-dd").create()
 }

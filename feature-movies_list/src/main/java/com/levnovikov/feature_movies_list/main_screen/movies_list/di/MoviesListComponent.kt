@@ -1,5 +1,8 @@
 package com.levnovikov.feature_movies_list.main_screen.movies_list.di
 
+import com.levnovikov.feature_movies_list.main_screen.DateStreamProvider
+import com.levnovikov.feature_movies_list.main_screen.MoviesScreenRepo
+import com.levnovikov.feature_movies_list.main_screen.OnDateSelectedListener
 import com.levnovikov.feature_movies_list.main_screen.movies_list.ListView
 import com.levnovikov.feature_movies_list.main_screen.movies_list.MovieVOLoader
 import com.levnovikov.feature_movies_list.main_screen.movies_list.MoviesListPresenter
@@ -25,8 +28,10 @@ interface MoviesListComponent {
 
     @Module
     interface MoviesListModule {
-        @Binds fun provideMovieLoader(presenter: MoviesListPresenter): MovieVOLoader
-        @Binds fun provideListView(view: MoviesListView): ListView
+        @Binds fun bindMovieLoader(presenter: MoviesListPresenter): MovieVOLoader
+        @Binds fun bindListView(view: MoviesListView): ListView
+        @Binds fun bindDateStreamProvider(impl: MoviesScreenRepo): DateStreamProvider
+        @Binds fun bindOnDateSelected(impl: MoviesScreenRepo): OnDateSelectedListener
     }
 
     @Subcomponent.Builder

@@ -16,6 +16,7 @@ ext {
     playServicesVersion = '11.0.4'
     gmsGoogleServicesPluginVersion = '3.0.0'
     recyclerViewVersion = '26.0.2'
+    guavaVersion = '24.0-android'
 }
 
 ext {
@@ -64,6 +65,7 @@ ext {
             leakCanary                : "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion",
             leakCanaryNoOp            : "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion",
             recyclerView              : "com.android.support:recyclerview-v7:$recyclerViewVersion",
+            guava                     : "com.google.guava:guava:$guavaVersion"
     ]
 
     aptLibs = [

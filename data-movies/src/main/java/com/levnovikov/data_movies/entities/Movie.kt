@@ -1,5 +1,7 @@
 package com.levnovikov.data_movies.entities
 
+import java.util.*
+
 /**
  * Author: lev.novikov
  * Date: 13/3/18.
