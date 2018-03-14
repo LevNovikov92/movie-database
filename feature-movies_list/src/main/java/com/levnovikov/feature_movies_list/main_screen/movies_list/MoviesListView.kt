@@ -75,5 +75,4 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         id.text = movieVO.id.toString()
         title.text = movieVO.title
     }
-
 }

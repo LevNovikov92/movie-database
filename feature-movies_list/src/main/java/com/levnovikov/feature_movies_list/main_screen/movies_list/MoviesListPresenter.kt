@@ -68,6 +68,7 @@ class EndlessScrollHandler @Inject constructor(
                     adapter.addItems(it.first)
                     totalPages = it.second.totalPages
                     loadingInProgress = false
+                    onScroll() //check conditions and load more data if needed
                 }, { TODO() })
     }
 
