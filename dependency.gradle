@@ -28,6 +28,7 @@ ext {
     okHttpVersion = '3.8.1'
     retrofitVersion = '2.3.0'
     timberVersion = '4.5.1'
+    picassoVersion = '2.71828'
 }
 
 ext {
@@ -65,7 +66,8 @@ ext {
             leakCanary                : "com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion",
             leakCanaryNoOp            : "com.squareup.leakcanary:leakcanary-android-no-op:$leakCanaryVersion",
             recyclerView              : "com.android.support:recyclerview-v7:$recyclerViewVersion",
-            guava                     : "com.google.guava:guava:$guavaVersion"
+            guava                     : "com.google.guava:guava:$guavaVersion",
+            picasso                   : "com.squareup.picasso:picasso:$picassoVersion"
     ]
 
     aptLibs = [

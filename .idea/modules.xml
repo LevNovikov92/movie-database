@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/core-common/core-common.iml" filepath="$PROJECT_DIR$/core-common/core-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/core-network/core-network.iml" filepath="$PROJECT_DIR$/core-network/core-network.iml" />
       <module fileurl="file://$PROJECT_DIR$/data-movies/data-movies.iml" filepath="$PROJECT_DIR$/data-movies/data-movies.iml" />
+      <module fileurl="file://$PROJECT_DIR$/feature-movie-details/feature-movie-details.iml" filepath="$PROJECT_DIR$/feature-movie-details/feature-movie-details.iml" />
       <module fileurl="file://$PROJECT_DIR$/feature-movies_list/feature-movies_list.iml" filepath="$PROJECT_DIR$/feature-movies_list/feature-movies_list.iml" />
       <module fileurl="file://$PROJECT_DIR$/moviedatabase.iml" filepath="$PROJECT_DIR$/moviedatabase.iml" />
       <module fileurl="file://$PROJECT_DIR$/system-lifecycle/system-lifecycle.iml" filepath="$PROJECT_DIR$/system-lifecycle/system-lifecycle.iml" />

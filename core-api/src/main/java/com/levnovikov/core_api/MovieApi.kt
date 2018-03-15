@@ -17,6 +17,6 @@ interface MovieApi {
     @GET("movie/now_playing")
     fun getUpcomingMovies(@Query("page") page: Int): Single<UpcomingMoviesResponse>
 
-    @GET("/movie/{movie_id}")
+    @GET("movie/{movie_id}")
     fun getMovieDetails(@Path("movie_id") id: Int): Single<MovieDetails>
 }

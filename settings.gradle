@@ -1,1 +1,1 @@
-include ':app', ':core-network', ':core-api', ':data-movies', ':feature-movies_list', ':core-common', ':system-lifecycle'
+include ':app', ':core-network', ':core-api', ':data-movies', ':feature-movies_list', ':core-common', ':system-lifecycle', ':feature-movie-details'

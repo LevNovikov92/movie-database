@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
@@ -25,9 +25,7 @@ dependencies {
     implementation libs.kotlin
     implementation libs.kotlinReflection
     implementation libs.dagger
-    implementation libs.gson
-    implementation libs.retrofit
-    implementation libs.okhttpLoggingInterceptor
+    implementation libs.guava
     implementation libs.picasso
 }
 
@@ -37,12 +35,9 @@ dependencies {
 }
 
 dependencies {
-    implementation project(":core-network")
-    implementation project(":core-api")
     implementation project(":data-movies")
-    implementation project(":feature-movies_list")
-    implementation project(":feature-movie-details")
     implementation project(":core-common")
+    implementation project(":system-lifecycle")
 }
 
 dependencies {
