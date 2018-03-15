@@ -20,6 +20,8 @@ import javax.inject.Inject
 
 interface ListView {
     fun getLastVisibleItemPosition(): Int
+    fun showProgress()
+    fun hideProgress()
 }
 
 class MoviesListView @JvmOverloads constructor(
@@ -36,6 +38,7 @@ class MoviesListView @JvmOverloads constructor(
     }
 
     private val layoutManager = LinearLayoutManager(context)
+    private lateinit var progressBar: View
 
     private fun initList() {
         val recycler = findViewById<RecyclerView>(R.id.recycler_view)
@@ -47,6 +50,7 @@ class MoviesListView @JvmOverloads constructor(
             }
         })
         recycler.adapter = presenter.getAdapter()
+        progressBar = findViewById(R.id.progress)
     }
 
     private fun setupDI() {
@@ -64,6 +68,14 @@ class MoviesListView @JvmOverloads constructor(
     }
 
     override fun getLastVisibleItemPosition(): Int = layoutManager.findLastVisibleItemPosition()
+
+    override fun showProgress() {
+        progressBar.visibility = View.VISIBLE
+    }
+
+    override fun hideProgress() {
+        progressBar.visibility = View.GONE
+    }
 }
 
 class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
