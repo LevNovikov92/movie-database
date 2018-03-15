@@ -23,7 +23,7 @@ class RetrofitBuilder @Inject constructor(
                 .baseUrl(baseUrl)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
     }
 }

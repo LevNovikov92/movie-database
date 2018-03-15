@@ -1,6 +1,7 @@
 package com.levnovikov.movie_database.di
 
 import android.content.Context
+import com.levnovikov.core_common.AsyncHelper
 import com.levnovikov.data_movies.MoviesRepo
 import com.levnovikov.data_movies.di.MovieDataModule
 import com.levnovikov.feature_movies_list.main_screen.di.MainComponentDependencies
@@ -18,7 +19,12 @@ import javax.inject.Singleton
 const val APP_CONTEXT = "APP_CONTEXT"
 
 @Singleton
-@Component(modules = [AppComponent.AppModule::class, NetworkConfigModule::class, MovieDataModule::class])
+@Component(modules = [
+    AppComponent.AppModule::class,
+    NetworkConfigModule::class,
+    MovieDataModule::class,
+    AsyncHelperModule::class
+])
 interface AppComponent : MainComponentDependencies {
 
     @Module
@@ -39,4 +45,5 @@ interface AppComponent : MainComponentDependencies {
 
     override fun context(): Context
     override fun moviesRepo(): MoviesRepo
+    override fun asyncHelper(): AsyncHelper
 }

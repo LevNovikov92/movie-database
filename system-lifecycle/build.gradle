@@ -8,10 +8,5 @@ android androidConfiguration
 dependencies {
     implementation libs.rxJava
     implementation libs.kotlin
-    implementation libs.dagger
-}
-
-dependencies {
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    implementation libs.appcompatV7
 }

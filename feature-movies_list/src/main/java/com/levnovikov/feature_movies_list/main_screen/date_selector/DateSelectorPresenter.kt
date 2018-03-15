@@ -2,11 +2,11 @@ package com.levnovikov.feature_movies_list.main_screen.date_selector
 
 import android.app.Activity
 import android.app.DatePickerDialog
-import android.content.Context
+import com.levnovikov.core_common.AsyncHelper
 import com.levnovikov.feature_movies_list.main_screen.DateStreamProvider
 import com.levnovikov.feature_movies_list.main_screen.OnDateSelectedListener
 import com.levnovikov.feature_movies_list.main_screen.date_selector.di.DateSelectorScope
-import io.reactivex.android.schedulers.AndroidSchedulers
+import com.levnovikov.system_lifecycle.activity.Lifecycle
 import java.util.*
 import javax.inject.Inject
 
@@ -20,14 +20,16 @@ class DateSelectorPresenter @Inject constructor(
         private val onDateSelectedListener: OnDateSelectedListener,
         private val activity: Activity,
         private val view: SelectorView,
+        lifecycle: Lifecycle,
+        asyncHelper: AsyncHelper,
         dateStreamProvider: DateStreamProvider
 ) {
 
     private val currentDate: Calendar = GregorianCalendar()
 
     init {
-        dateStreamProvider.getDateStream() //TODO unsubscribe
-                .observeOn(AndroidSchedulers.mainThread())
+        lifecycle.subscribeUntilDestroy(dateStreamProvider.getDateStream()
+                .compose(asyncHelper.observeInMain())
                 .subscribe({
                     view.setDate(if (it.isPresent) {
                         currentDate.time = it.get()
@@ -36,7 +38,7 @@ class DateSelectorPresenter @Inject constructor(
                         currentDate.time = Date()
                         null
                     })
-                }, { TODO() })
+                }, { TODO() }))
     }
 
     fun showDatePickerDialog() {
