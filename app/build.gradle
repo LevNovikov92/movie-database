@@ -41,7 +41,7 @@ dependencies {
     implementation project(":core-api")
     implementation project(":data-movies")
     implementation project(":feature-movies_list")
-    implementation project(":feature-movie-details")
+    implementation project(":feature-movie_details")
     implementation project(":core-common")
 }
 
