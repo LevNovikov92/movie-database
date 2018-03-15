@@ -83,8 +83,11 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private var id: TextView = view.findViewById(R.id.movie_id)
     private var title: TextView = view.findViewById(R.id.title)
 
-    fun bind(movieVO: MovieVO) {
+    fun bind(movieVO: MovieVO, listener: OnItemClick?) {
         id.text = movieVO.id.toString()
         title.text = movieVO.title
+        itemView.setOnClickListener {
+            listener?.onItemClick(movieVO.id)
+        }
     }
 }

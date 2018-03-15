@@ -3,7 +3,9 @@ package com.levnovikov.feature_movies_list.main_screen.di
 import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
+import com.levnovikov.core_common.ActivityStarter
 import com.levnovikov.core_common.AsyncHelper
+import com.levnovikov.core_common.activity_starter.DetailsActivityStarter
 import com.levnovikov.data_movies.MoviesRepo
 import com.levnovikov.feature_movies_list.main_screen.DateStreamProvider
 import com.levnovikov.feature_movies_list.main_screen.MoviesListActivity
@@ -33,6 +35,7 @@ interface MainComponentDependencies {
     fun context(): Context
     fun moviesRepo(): MoviesRepo
     fun asyncHelper(): AsyncHelper
+    fun detailsActivityStarter(): DetailsActivityStarter
 }
 
 @MainScope
@@ -58,6 +61,9 @@ interface MainComponent {
 
         @Provides
         fun provideLifecycle(activity: MoviesListActivity): Lifecycle = activity
+
+        @Provides
+        fun provideActivityStarter(activity: MoviesListActivity): ActivityStarter = ActivityStarter(activity)
     }
 
     @Component.Builder

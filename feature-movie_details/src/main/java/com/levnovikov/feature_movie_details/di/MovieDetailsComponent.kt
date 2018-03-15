@@ -47,7 +47,7 @@ interface MovieDetailsComponent {
 
         @Provides
         @Named(MOVIE_ID)
-        fun provideId(): Int = 399057
+        fun provideId(activity: MovieDetailsActivity): Int = activity.intent.getIntExtra(MOVIE_ID, 0)
     }
 
     @Component.Builder

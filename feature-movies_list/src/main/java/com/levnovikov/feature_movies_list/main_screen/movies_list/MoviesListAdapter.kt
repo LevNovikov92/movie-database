@@ -25,6 +25,12 @@ class MoviesListAdapter @Inject constructor(
         notifyDataSetChanged()
     }
 
+    private var listener: OnItemClick? = null
+
+    fun setListener(listener: OnItemClick) {
+        this.listener = listener
+    }
+
     private val data: MutableList<MovieVO> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder =
@@ -33,7 +39,8 @@ class MoviesListAdapter @Inject constructor(
     override fun getItemCount(): Int = data.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(data[position])
+        val itemData = data[position]
+        holder.bind(itemData, listener)
     }
 
     fun itemsCount(): Int = data.size

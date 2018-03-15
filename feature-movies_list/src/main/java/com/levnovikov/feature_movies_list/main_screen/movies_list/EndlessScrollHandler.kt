@@ -20,6 +20,10 @@ interface PageLoadingListener {
     fun onLoaded()
 }
 
+interface OnItemClick {
+    fun onItemClick(id: Int)
+}
+
 class EndlessScrollHandler @Inject constructor(
         private val adapter: MoviesListAdapter,
         private val view: ListView,

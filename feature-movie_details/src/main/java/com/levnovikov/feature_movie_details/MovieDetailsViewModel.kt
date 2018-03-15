@@ -17,7 +17,7 @@ import javax.inject.Named
  * Date: 15/3/18.
  */
 
-internal const val MOVIE_ID = "MOVIE_ID"
+const val MOVIE_ID = "MOVIE_ID"
 
 interface MovieDetailsViewModel {
     var progressVisibility: ObservableBoolean

@@ -27,7 +27,8 @@ const val APP_CONTEXT = "APP_CONTEXT"
     NetworkConfigModule::class,
     MovieDataModule::class,
     AsyncHelperModule::class,
-    PicassoModule::class
+    PicassoModule::class,
+    ActivityStarterModule::class
 ])
 interface AppComponent : MainComponentDependencies, MovieDetailsDependencies {
 

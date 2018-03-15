@@ -1,6 +1,8 @@
 package com.levnovikov.feature_movies_list.main_screen.movies_list
 
+import com.levnovikov.core_common.ActivityStarter
 import com.levnovikov.core_common.AsyncHelper
+import com.levnovikov.core_common.activity_starter.DetailsActivityStarter
 import com.levnovikov.data_movies.MoviesRepo
 import com.levnovikov.data_movies.entities.PagerMetadata
 import com.levnovikov.feature_movies_list.main_screen.DateStreamProvider
@@ -19,14 +21,22 @@ import javax.inject.Inject
 class MoviesListPresenter @Inject constructor(
         private val moviesRepo: MoviesRepo,
         adapter: MoviesListAdapter,
+        private val activityStarter: ActivityStarter,
+        private val movieDetailsActivityStarter: DetailsActivityStarter,
         private val view: ListView,
         lifecycle: Lifecycle,
         asyncHelper: AsyncHelper,
         dateStreamProvider: DateStreamProvider
-) : MovieVOLoader, PageLoadingListener {
+) : MovieVOLoader, PageLoadingListener, OnItemClick {
+
+    override fun onItemClick(id: Int) {
+        movieDetailsActivityStarter.startDetailsActivity(activityStarter, id) //TODO refactor it
+    }
 
     private val endlessScrollHandler: EndlessScrollHandler
-            = EndlessScrollHandler(adapter, view, this, lifecycle, this, asyncHelper)
+            = EndlessScrollHandler(adapter
+            .apply { setListener(this@MoviesListPresenter) }, view,
+            this, lifecycle, this, asyncHelper)
 
     init {
         lifecycle.subscribeUntilDestroy(dateStreamProvider.getDateStream()
