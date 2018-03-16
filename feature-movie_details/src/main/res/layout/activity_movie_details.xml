@@ -22,6 +22,16 @@
             android:layout_gravity="center"
             android:visibility="@{vm.progressVisibility ? View.VISIBLE : View.GONE}"/>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="@string/details_loading_error"
+            android:visibility="@{vm.errorMessageVisibility ? View.VISIBLE : View.GONE}"/>
+
         <android.support.constraint.ConstraintLayout
             android:id="@+id/details_layout"
             android:layout_width="match_parent"
@@ -32,6 +42,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:minHeight="300dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

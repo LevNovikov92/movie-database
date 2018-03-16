@@ -3,6 +3,7 @@ package com.levnovikov.feature_movies_list.main_screen.date_selector
 import android.app.Activity
 import android.app.DatePickerDialog
 import com.levnovikov.core_common.AsyncHelper
+import com.levnovikov.core_common.defaultError
 import com.levnovikov.feature_movies_list.main_screen.DateStreamProvider
 import com.levnovikov.feature_movies_list.main_screen.OnDateSelectedListener
 import com.levnovikov.feature_movies_list.main_screen.date_selector.di.DateSelectorScope
@@ -38,7 +39,7 @@ class DateSelectorPresenter @Inject constructor(
                         currentDate.time = Date()
                         null
                     })
-                }, { TODO() }))
+                }, defaultError))
     }
 
     fun showDatePickerDialog() {

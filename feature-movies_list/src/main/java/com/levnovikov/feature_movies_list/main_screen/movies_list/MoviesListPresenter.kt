@@ -1,11 +1,14 @@
 package com.levnovikov.feature_movies_list.main_screen.movies_list
 
+import android.app.Activity
 import com.levnovikov.core_common.ActivityStarter
 import com.levnovikov.core_common.AsyncHelper
 import com.levnovikov.core_common.activity_starter.DetailsActivityStarter
+import com.levnovikov.core_common.defaultError
 import com.levnovikov.data_movies.MoviesRepo
 import com.levnovikov.data_movies.entities.PagerMetadata
 import com.levnovikov.feature_movies_list.main_screen.DateStreamProvider
+import com.levnovikov.feature_movies_list.main_screen.Navigator
 import com.levnovikov.feature_movies_list.main_screen.movies_list.di.MoviesListScope
 import com.levnovikov.system_lifecycle.activity.Lifecycle
 import io.reactivex.Single
@@ -20,18 +23,15 @@ import javax.inject.Inject
 @MoviesListScope
 class MoviesListPresenter @Inject constructor(
         private val moviesRepo: MoviesRepo,
-        adapter: MoviesListAdapter,
-        private val activityStarter: ActivityStarter,
-        private val movieDetailsActivityStarter: DetailsActivityStarter,
+        private val navigator: Navigator,
         private val view: ListView,
+        adapter: MoviesListAdapter,
         lifecycle: Lifecycle,
         asyncHelper: AsyncHelper,
         dateStreamProvider: DateStreamProvider
 ) : MovieVOLoader, PageLoadingListener, OnItemClick {
 
-    override fun onItemClick(id: Int) {
-        movieDetailsActivityStarter.startDetailsActivity(activityStarter, id) //TODO refactor it
-    }
+    override fun onItemClick(id: Int) = navigator.startMovieDetails(id)
 
     private val endlessScrollHandler: EndlessScrollHandler
             = EndlessScrollHandler(adapter
@@ -43,7 +43,7 @@ class MoviesListPresenter @Inject constructor(
                 .compose(asyncHelper.observeInMain())
                 .subscribe({
                     endlessScrollHandler.reloadData(if (it.isPresent) it.get() else null)
-                }, { TODO() }))
+                }, defaultError))
     }
 
     override fun loadVO(page: Int, date: Date?): Single<Pair<List<MovieVO>, PagerMetadata>> =

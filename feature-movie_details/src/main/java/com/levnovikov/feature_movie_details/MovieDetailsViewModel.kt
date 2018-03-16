@@ -22,6 +22,7 @@ const val MOVIE_ID = "MOVIE_ID"
 interface MovieDetailsViewModel {
     var progressVisibility: ObservableBoolean
     var detailsVisibility: ObservableBoolean
+    var errorMessageVisibility: ObservableBoolean
     var data: ObservableField<MovieDetailsVO>
 }
 
@@ -36,6 +37,7 @@ class MovieDetailsViewModelImpl @Inject constructor(
 
     override var progressVisibility = ObservableBoolean(false)
     override var detailsVisibility = ObservableBoolean(false)
+    override var errorMessageVisibility = ObservableBoolean(false)
     override var data = ObservableField<MovieDetailsVO>()
 
     init {
@@ -50,13 +52,19 @@ class MovieDetailsViewModelImpl @Inject constructor(
                 .subscribe({
                     data.set(it)
                     showProgress(false)
-                }, { TODO() })
+                }, { showError() })
                 .let { lifecycle.subscribeUntilDestroy(it) }
     }
 
     private fun showProgress(show: Boolean) {
         progressVisibility.set(show)
         detailsVisibility.set(!show)
+        errorMessageVisibility.set(false)
+    }
+
+    private fun showError() {
+        showProgress(true)
+        errorMessageVisibility.set(true)
     }
 }
 

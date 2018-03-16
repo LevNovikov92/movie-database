@@ -61,9 +61,6 @@ interface MainComponent {
 
         @Provides
         fun provideLifecycle(activity: MoviesListActivity): Lifecycle = activity
-
-        @Provides
-        fun provideActivityStarter(activity: MoviesListActivity): ActivityStarter = ActivityStarter(activity)
     }
 
     @Component.Builder
