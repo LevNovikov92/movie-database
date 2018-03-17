@@ -3,6 +3,7 @@ package com.levnovikov.feature_movies_list.main_screen.movies_list
 import android.support.annotation.MainThread
 import android.util.Log
 import com.levnovikov.core_common.AsyncHelper
+import com.levnovikov.core_common.defaultError
 import com.levnovikov.data_movies.entities.PagerMetadata
 import com.levnovikov.system_lifecycle.activity.Lifecycle
 import io.reactivex.Single
@@ -73,7 +74,7 @@ class EndlessScrollHandler @Inject constructor(
                     loadingInProgress = false
                     onScroll() //check conditions and load more data if needed
                     pageLoadingListener.onLoaded()
-                }, {  }) //TODO handle error, handle 429: make next request with exponential delay
+                }, defaultError)
                 .apply { lifecycle.subscribeUntilDestroy(this) }
     }
 

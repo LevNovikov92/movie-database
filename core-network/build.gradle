@@ -26,6 +26,8 @@ dependencies {
 }
 
 dependencies {
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    testImplementation testLibs.jUnit
+    testImplementation testLibs.mockito
+    testImplementation testLibs.mockitoKotlin
+    testImplementation testLibs.mockWebServer
 }
