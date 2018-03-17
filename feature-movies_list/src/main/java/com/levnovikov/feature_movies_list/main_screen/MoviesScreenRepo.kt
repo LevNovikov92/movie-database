@@ -16,12 +16,16 @@ import javax.inject.Inject
 class MoviesScreenRepo @Inject constructor(dateByDefault: Date?) : OnDateSelectedListener, DateStreamProvider {
 
     private val dateStream = BehaviorSubject.createDefault<Optional<Date>>(Optional.fromNullable(dateByDefault))
+    private var latestValue: Date? = dateByDefault
 
     override fun onDateSelected(date: Date?) {
+        latestValue = date
         dateStream.onNext(Optional.fromNullable(date))
     }
 
     override fun getDateStream(): Observable<Optional<Date>> = dateStream.distinctUntilChanged()
+
+    override fun getLatestValue(): Date? = latestValue
 }
 
 interface OnDateSelectedListener {
@@ -30,4 +34,5 @@ interface OnDateSelectedListener {
 
 interface DateStreamProvider {
     fun getDateStream(): Observable<Optional<Date>>
+    fun getLatestValue(): Date?
 }
