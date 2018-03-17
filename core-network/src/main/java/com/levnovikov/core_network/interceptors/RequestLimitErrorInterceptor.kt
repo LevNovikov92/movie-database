@@ -28,8 +28,8 @@ class RequestLimitErrorInterceptor @Inject constructor() : Interceptor {
 
     private fun handleResponse(chain: Interceptor.Chain, request: Request): Response {
         val response = chain.proceed(request)
-        lastResponseCode = ResponseCode.REQUEST_LIMIT_ERROR.code
         if (ResponseCode.REQUEST_LIMIT_ERROR.equals(response.code())) {
+            lastResponseCode = ResponseCode.REQUEST_LIMIT_ERROR.code
             //if api limit was reached only one thread will repeat with delay, other threads will wait
             synchronized(this) {
                 //repeat without delay if limit was restored while current thread was waiting

@@ -34,7 +34,7 @@ class DateSelectorPresenter @Inject constructor(
                 .subscribe({
                     view.setDate(if (it.isPresent) {
                         currentDate.time = it.get()
-                        GregorianCalendar().apply { it.get() }
+                        GregorianCalendar().apply { this.time = it.get() }
                     } else {
                         currentDate.time = Date()
                         null
