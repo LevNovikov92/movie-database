@@ -1,6 +1,6 @@
 package com.levnovikov.core_api
 
-import com.levnovikov.core_api.entities.MovieDetails
+import com.levnovikov.core_api.responses.MovieDetailsResponse
 import com.levnovikov.core_api.responses.UpcomingMoviesResponse
 import io.reactivex.Single
 import retrofit2.http.GET
@@ -18,5 +18,5 @@ interface MovieApi {
     fun getUpcomingMovies(@Query("page") page: Int): Single<UpcomingMoviesResponse>
 
     @GET("movie/{movie_id}")
-    fun getMovieDetails(@Path("movie_id") id: Int): Single<MovieDetails>
+    fun getMovieDetails(@Path("movie_id") id: Int): Single<MovieDetailsResponse>
 }

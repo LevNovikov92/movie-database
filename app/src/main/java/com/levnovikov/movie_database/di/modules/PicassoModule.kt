@@ -1,8 +1,7 @@
-package com.levnovikov.movie_database.di
+package com.levnovikov.movie_database.di.modules
 
 import android.content.Context
 import android.net.Uri
-import com.levnovikov.core_network.BASE_URL
 import com.squareup.picasso.Picasso
 import dagger.Module
 import dagger.Provides

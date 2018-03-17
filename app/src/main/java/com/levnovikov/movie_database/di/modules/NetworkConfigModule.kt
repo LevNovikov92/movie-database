@@ -1,4 +1,4 @@
-package com.levnovikov.movie_database.di
+package com.levnovikov.movie_database.di.modules
 
 import com.levnovikov.core_network.API_KEY
 import com.levnovikov.core_network.BASE_URL

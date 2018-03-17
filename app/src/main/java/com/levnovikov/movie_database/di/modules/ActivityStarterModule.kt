@@ -1,7 +1,7 @@
-package com.levnovikov.movie_database.di
+package com.levnovikov.movie_database.di.modules
 
 import com.levnovikov.core_common.activity_starter.DetailsActivityStarter
-import com.levnovikov.movie_database.activity_starter_impl.DetailsActivityStarterImpl
+import com.levnovikov.feature_movie_details.activity_starter.DetailsActivityStarterImpl
 import dagger.Binds
 import dagger.Module
 

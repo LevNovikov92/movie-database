@@ -1,7 +1,6 @@
 package com.levnovikov.core_api.responses
 
 import com.google.gson.annotations.SerializedName
-import com.levnovikov.core_api.entities.Movie
 
 /**
  * Author: lev.novikov
@@ -9,6 +8,6 @@ import com.levnovikov.core_api.entities.Movie
  */
 data class UpcomingMoviesResponse(
         val page: Int,
-        val results: List<Movie>,
+        val results: List<MovieResponse>,
         @SerializedName("total_pages") val totalPages: Int
 )

@@ -1,4 +1,4 @@
-package com.levnovikov.movie_database.activity_starter_impl
+package com.levnovikov.feature_movie_details.activity_starter
 
 import android.app.Activity
 import android.content.Intent
@@ -11,7 +11,6 @@ import javax.inject.Inject
  * Author: lev.novikov
  * Date: 15/3/18.
  */
-
 
 class DetailsActivityStarterImpl @Inject constructor() : DetailsActivityStarter {
 
