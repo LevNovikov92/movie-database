@@ -13,9 +13,9 @@ import javax.inject.Inject
  */
 
 @MainScope
-class MoviesScreenRepo @Inject constructor() : OnDateSelectedListener, DateStreamProvider {
+class MoviesScreenRepo @Inject constructor(dateByDefault: Date?) : OnDateSelectedListener, DateStreamProvider {
 
-    private val dateStream = BehaviorSubject.createDefault<Optional<Date>>(Optional.absent())
+    private val dateStream = BehaviorSubject.createDefault<Optional<Date>>(Optional.fromNullable(dateByDefault))
 
     override fun onDateSelected(date: Date?) {
         dateStream.onNext(Optional.fromNullable(date))

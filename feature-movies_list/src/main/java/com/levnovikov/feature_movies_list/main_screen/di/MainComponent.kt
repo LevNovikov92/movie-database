@@ -20,6 +20,7 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
 import dagger.Provides
+import java.util.*
 import javax.inject.Scope
 
 /**
@@ -70,6 +71,9 @@ interface MainComponent {
 
         @BindsInstance
         fun activity(activity: MoviesListActivity): Builder
+
+        @BindsInstance
+        fun dateByDefault(date: Date?): Builder
     }
 
     fun inject(moviesListActivity: MoviesListActivity)
