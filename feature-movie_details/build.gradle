@@ -41,6 +41,7 @@ dependencies {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar']) //clean up
-    testImplementation 'junit:junit:4.12'
+    testImplementation testLibs.jUnit
+    testImplementation testLibs.mockito
+    testImplementation testLibs.mockitoKotlin
 }
