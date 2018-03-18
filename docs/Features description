@@ -1,0 +1,17 @@
+### Movies list screen
+
+This screen contains latest movies. Loading happens page by page, infinite scrolling is supported.
+By default, the application will load all movies for all dates.
+Pressing "All dates" view will open date selection dialog. It allows a user to filter movies by date. Since themoviedb API doesn't support requests with filter (i was not able to find), the application will make same requests and filter results on a client. So, more pages will be uploaded.
+
+If the user will press on the item in the list, movie details screen will be opened.
+
+The themoviedb API have the request limit (40 requests every 10 seconds) and will return 429 error when limit will be reached. [RequestLimitErrorInterceptor](https://github.com/LevNovikov92/movie-database/blob/master/core-network/src/main/java/com/levnovikov/core_network/interceptors/RequestLimitErrorInterceptor.kt) is handling that case by repeating the request with 3 seconds delay and blocking other requests. More details in RequestLimitErrorInterceptor.kt comments.
+
+To keep filter data during activity recreation MoviesListState will be saved in the bundle and restored after recreation.
+
+NOTE: Somehow themoviedb API sometimes return the same movie on two different pages (page 3 and 4 for instance). It looks like an API bug. Didn't have enough time for research.
+
+### Movie details
+
+Screen contains movie description and image.
