@@ -24,7 +24,9 @@ include ':feature-movies_list', ':feature-movie_details'
 include ':data-movies'
 
 /**
- * intermediate-level serve to call/use one feature from another
+ * intermediate-level serve to call/use one feature from another.
+ * Module should be very light-weight to improve build time since many feature-modules
+ * will be depend on. To allow parallel work module should be compiled very fast.
  *
  * Modules should not have project dependencies
  */
