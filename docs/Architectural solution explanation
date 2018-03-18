@@ -1,0 +1,42 @@
+Overview
+
+Project architecture was developed for big scalable project and working in big team.
+
+1. Structure
+
+Project is using multi-module structure to separate code by logical meaning, stability and
+keep explicit dependencies between components. Additionally we can specify module owners to
+make changes more safety and make code more maintainable.
+
+Different module levels introducing strict limits for dependencies and help to avoid
+wrong architectural solutions, cyclic dependencies and build time increasing, that is very important
+for big projects.
+
+Module-levels, purpose and dependencies restrictions specified in ../settings.gradle file.
+Current module tree picture is provided on ./modules_dependencies.png
+
+2. Dependency injection
+
+Two types of DI components are used in current project: explicit dependency (Dagger components)
+and implicit dependency (Dagger subcomponents).
+
+Component injection is used to connect modules (like app and feature-movies_list). This will help
+to see clearly what kind of dependencies module have and provide interface
+for parent to resolve (for instance MainComponentDependencies).
+It will help to control dependency changing.
+Additionally this solution will help to improve build time since subcomponents injection
+will take more time to compile if it is used for whole app. Incremental build will also be improved
+because components ae separated explicitly. Subcomponents tree will be recompiled every time.
+
+Inside the module subcomponents are used. It will not affect build time, will reduce boilerplate
+and simplify development.
+
+3. UI layer architecture
+
+For learn purpose in project are used two patterns: MVP and MVVM.
+feature-movies_list following MVP pattern.
+feature-movie_details following MVVM pattern with dataBinding usage.
+
+In feature-movies_list implementation UI was spited in two views in order to keep
+two independent axes of changes. That will help to make UI more flexible
+
