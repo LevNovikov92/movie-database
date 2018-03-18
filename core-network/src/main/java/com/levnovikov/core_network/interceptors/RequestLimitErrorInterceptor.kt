@@ -9,10 +9,11 @@ import javax.inject.Inject
 /**
  * Author: lev.novikov
  * Date: 13/3/18.
- */
-
-
-/**
+ *
+ * RequestLimitErrorInterceptor will repeat requests with delay in case
+ * if 429 will be returned and limit will be reached.
+ * If api limit was reached only one thread will repeat with delay, other threads will wait
+ *
  * Current api limit - 40 requests per 10 sec.
  * 4 times * 3 seconds > 10 sec. It will guarantee required delay.
  */

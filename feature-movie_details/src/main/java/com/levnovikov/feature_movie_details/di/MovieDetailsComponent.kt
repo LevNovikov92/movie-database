@@ -7,6 +7,7 @@ import com.levnovikov.feature_movie_details.MOVIE_ID
 import com.levnovikov.feature_movie_details.MovieDetailsActivity
 import com.levnovikov.feature_movie_details.MovieDetailsViewModel
 import com.levnovikov.feature_movie_details.MovieDetailsViewModelImpl
+import com.levnovikov.feature_movie_details.ViewModelActions
 import com.levnovikov.system_lifecycle.activity.Lifecycle
 import com.squareup.picasso.Picasso
 import dagger.Binds
@@ -41,6 +42,9 @@ interface MovieDetailsComponent {
     class MovieDetailsModule {
         @Provides
         fun provideViewModel(impl: MovieDetailsViewModelImpl): MovieDetailsViewModel = impl
+
+        @Provides
+        fun provideViewModelActions(impl: MovieDetailsViewModelImpl): ViewModelActions = impl
 
         @Provides
         fun provideLifecycle(activity: MovieDetailsActivity): Lifecycle = activity

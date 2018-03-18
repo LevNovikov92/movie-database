@@ -1,6 +1,7 @@
 package com.levnovikov.movie_database.di.modules
 
 import com.levnovikov.core_common.AsyncHelper
+import com.levnovikov.core_common.AsyncHelperImpl
 import dagger.Module
 import dagger.Provides
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -15,7 +16,7 @@ import io.reactivex.schedulers.Schedulers
 class AsyncHelperModule {
 
     @Provides
-    fun provideAsyncHelper() = AsyncHelper(
+    fun provideAsyncHelper(): AsyncHelper = AsyncHelperImpl(
             AndroidSchedulers.mainThread(),
             Schedulers.computation(),
             Schedulers.io())

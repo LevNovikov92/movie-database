@@ -1,9 +1,6 @@
 package com.levnovikov.feature_movies_list.main_screen.movies_list
 
-import android.app.Activity
-import com.levnovikov.core_common.ActivityStarter
 import com.levnovikov.core_common.AsyncHelper
-import com.levnovikov.core_common.activity_starter.DetailsActivityStarter
 import com.levnovikov.core_common.defaultError
 import com.levnovikov.data_movies.MoviesRepo
 import com.levnovikov.data_movies.entities.PagerMetadata

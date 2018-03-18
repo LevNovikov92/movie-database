@@ -11,10 +11,17 @@ import com.levnovikov.system_lifecycle.activity.LifecycleActivity
 import com.squareup.picasso.Picasso
 import javax.inject.Inject
 
+/**
+ * MovieDetailsActivity component will follow MVVM design pattern with android data binding
+ */
+
 class MovieDetailsActivity : LifecycleActivity() {
 
     @Inject
     lateinit var vm: MovieDetailsViewModel
+
+    @Inject
+    lateinit var vmActions: ViewModelActions
 
     @Inject
     lateinit var picasso: Picasso
@@ -24,6 +31,7 @@ class MovieDetailsActivity : LifecycleActivity() {
         setupDI()
         setupBinding()
         setupImageLoader()
+        vmActions.onGetActive()
     }
 
     private fun setupImageLoader() {

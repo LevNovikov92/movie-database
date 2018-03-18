@@ -2,6 +2,7 @@ package com.levnovikov.feature_movie_details
 
 import android.databinding.ObservableBoolean
 import android.databinding.ObservableField
+import android.support.annotation.VisibleForTesting
 import com.levnovikov.core_common.AsyncHelper
 import com.levnovikov.data_movies.MoviesRepo
 import com.levnovikov.data_movies.entities.MovieDetails
@@ -19,6 +20,7 @@ import javax.inject.Named
 
 const val MOVIE_ID = "MOVIE_ID"
 
+//Interface was introduced to hide VM methods and ban calls from xml
 interface MovieDetailsViewModel {
     var progressVisibility: ObservableBoolean
     var detailsVisibility: ObservableBoolean
@@ -26,43 +28,50 @@ interface MovieDetailsViewModel {
     var data: ObservableField<MovieDetailsVO>
 }
 
+//Interface was introduced to allow to start VM from activity
+interface ViewModelActions {
+    fun onGetActive()
+}
+
 @MovieDetailsScope
 class MovieDetailsViewModelImpl @Inject constructor(
         private val moviesRepo: MoviesRepo,
         private val lifecycle: Lifecycle,
         private val asyncHelper: AsyncHelper,
-        private val mapper: MovieDetailsMapper,
         @Named(MOVIE_ID) private val movieId: Int
-) : MovieDetailsViewModel {
+) : MovieDetailsViewModel, ViewModelActions {
 
     override var progressVisibility = ObservableBoolean(false)
     override var detailsVisibility = ObservableBoolean(false)
     override var errorMessageVisibility = ObservableBoolean(false)
     override var data = ObservableField<MovieDetailsVO>()
 
-    init {
+    override fun onGetActive() {
         loadDetails()
     }
 
-    private fun loadDetails() {
+    @VisibleForTesting
+    internal fun loadDetails() {
         showProgress(true)
         moviesRepo.getMovieDetails(movieId)
-                .compose(asyncHelper.asyncCall())
-                .map(mapper)
+                .compose(asyncHelper.subscribeInIO()) //subscribe and observe in IO since we are using android dataBindings
+                .map(MovieDetailsMapper())
                 .subscribe({
                     data.set(it)
                     showProgress(false)
                 }, { showError() })
-                .let { lifecycle.subscribeUntilDestroy(it) }
+                .let { lifecycle.subscribeUntilDestroy(it) } //dispose observable on activity onDestroy
     }
 
-    private fun showProgress(show: Boolean) {
+    @VisibleForTesting
+    internal fun showProgress(show: Boolean) {
         progressVisibility.set(show)
         detailsVisibility.set(!show)
         errorMessageVisibility.set(false)
     }
 
-    private fun showError() {
+    @VisibleForTesting
+    internal fun showError() {
         showProgress(true)
         errorMessageVisibility.set(true)
     }

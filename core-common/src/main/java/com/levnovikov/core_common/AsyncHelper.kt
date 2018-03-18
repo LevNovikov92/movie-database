@@ -10,29 +10,42 @@ import javax.inject.Inject
  * Date: 15/3/18.
  */
 
-class AsyncHelper @Inject constructor(
+interface AsyncHelper {
+    fun <Upstream> observeInMain(): ObservableTransformer<Upstream, Upstream>
+    fun <Upstream> async(): ObservableTransformer<Upstream, Upstream>
+    fun <Upstream> observeInMainSingle(): SingleTransformer<Upstream, Upstream>
+    fun <Upstream> asyncCall(): SingleTransformer<Upstream, Upstream>
+    fun <Upstream> subscribeInIO(): SingleTransformer<Upstream, Upstream>
+}
+
+class AsyncHelperImpl @Inject constructor(
         private val mainScheduler: Scheduler,
         private val workingScheduler: Scheduler,
         private val ioScheduler: Scheduler
-) {
+) : AsyncHelper {
 
-    fun <Upstream> observeInMain(): ObservableTransformer<Upstream, Upstream> =
+    override fun <Upstream> observeInMain(): ObservableTransformer<Upstream, Upstream> =
             ObservableTransformer {
                 it.observeOn(mainScheduler)
             }
 
-    fun <Upstream> async(): ObservableTransformer<Upstream, Upstream> =
+    override fun <Upstream> async(): ObservableTransformer<Upstream, Upstream> =
             ObservableTransformer {
                 it.subscribeOn(workingScheduler).observeOn(mainScheduler)
             }
 
-    fun <Upstream> observeInMainSingle(): SingleTransformer<Upstream, Upstream> =
+    override fun <Upstream> observeInMainSingle(): SingleTransformer<Upstream, Upstream> =
             SingleTransformer {
                 it.observeOn(mainScheduler)
             }
 
-    fun <Upstream> asyncCall(): SingleTransformer<Upstream, Upstream> =
+    override fun <Upstream> asyncCall(): SingleTransformer<Upstream, Upstream> =
             SingleTransformer {
                 it.subscribeOn(ioScheduler).observeOn(mainScheduler)
+            }
+
+    override fun <Upstream> subscribeInIO(): SingleTransformer<Upstream, Upstream> =
+            SingleTransformer {
+                it.subscribeOn(ioScheduler)
             }
 }
