@@ -36,6 +36,7 @@ class MoviesListView @JvmOverloads constructor(
         super.onAttachedToWindow()
         setupDI()
         initList()
+        presenter.onGetActive()
     }
 
     private val layoutManager = LinearLayoutManager(context)

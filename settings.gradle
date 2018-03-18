@@ -1,1 +1,30 @@
-include ':app', ':core-network', ':core-api', ':data-movies', ':feature-movies_list', ':core-common', ':system-lifecycle', ':feature-movie_details'
+/**
+ * application module contains app-scope entities and resolves DI dependencies
+ */
+include ':app'
+
+/**
+ * feature-level modules contain feature business logic, UI and specific domain related repositories.
+ * Level will be changed frequently. Every changing should be approved by feature-owner
+ */
+include ':feature-movies_list', ':feature-movie_details'
+
+/**
+ * data-level modules contain shareable data repositories (domain specific repos should be on feature-level)
+ * This level is more stable that feature-level but still will be changed frequently.
+ * Changes should get related feature-owners agreements.
+ */
+include ':data-movies'
+
+/**
+ * core-level contains stable modules with critical functionality. Should have
+ * special reasons to change since all app will be affected.
+ * Changes should be approved by project architect.
+ */
+include ':core-network', ':core-api', ':core-common'
+
+/**
+ * system-level contains custom libs and solutions.
+ * Changes should be approved by lib creator.
+ */
+include ':system-lifecycle'

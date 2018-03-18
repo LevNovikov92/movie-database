@@ -41,6 +41,7 @@ class DateSelectorView @JvmOverloads constructor(
         findViewById<View>(R.id.clear).setOnClickListener {
             presenter.onClearClicked()
         }
+        presenter.onGetActive()
     }
 
     @Suppress("ReplaceSingleLineLet")

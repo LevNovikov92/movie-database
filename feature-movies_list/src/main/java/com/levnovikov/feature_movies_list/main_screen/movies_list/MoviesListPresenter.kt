@@ -3,6 +3,7 @@ package com.levnovikov.feature_movies_list.main_screen.movies_list
 import android.support.v7.widget.RecyclerView
 import com.levnovikov.core_common.AsyncHelper
 import com.levnovikov.core_common.defaultError
+import com.levnovikov.core_common.mvp_mvvm.Active
 import com.levnovikov.data_movies.MoviesRepo
 import com.levnovikov.data_movies.entities.PagerMetadata
 import com.levnovikov.feature_movies_list.main_screen.DateStreamProvider
@@ -23,7 +24,7 @@ import javax.inject.Inject
  * Date: 14/3/18.
  */
 
-interface MoviesListPresenter {
+interface MoviesListPresenter : Active {
     fun onScrolled()
     fun getAdapter(): RecyclerView.Adapter<*>
 }
@@ -34,17 +35,17 @@ class MoviesListPresenterImpl @Inject constructor(
         private val navigator: Navigator,
         private val view: ListView,
         scrollHandlerProvider: ScrollHandlerFactory,
-        lifecycle: Lifecycle,
-        asyncHelper: AsyncHelper,
-        dateStreamProvider: DateStreamProvider
+        private val lifecycle: Lifecycle,
+        private val asyncHelper: AsyncHelper,
+        private val dateStreamProvider: DateStreamProvider
 ) : MoviesListPresenter, MovieVOLoader, PageLoadingListener, OnItemClick {
-
-    override fun onItemClick(id: Int) = navigator.startMovieDetails(id)
 
     private val scrollHandler: ScrollHandler
             = scrollHandlerProvider.getEndlessScrollHandler(this, this, this)
 
-    init {
+    override fun onItemClick(id: Int) = navigator.startMovieDetails(id)
+
+    override fun onGetActive() {
         lifecycle.subscribeUntilDestroy(dateStreamProvider.getDateStream()
                 .compose(asyncHelper.observeInMain())
                 .subscribe({

@@ -1,5 +1,7 @@
 package com.levnovikov.feature_movies_list.main_screen.date_selector.di
 
+import com.levnovikov.feature_movies_list.main_screen.date_selector.DateSelectorPresenter
+import com.levnovikov.feature_movies_list.main_screen.date_selector.DateSelectorPresenterImpl
 import com.levnovikov.feature_movies_list.main_screen.date_selector.DateSelectorView
 import com.levnovikov.feature_movies_list.main_screen.date_selector.SelectorView
 import dagger.Binds
@@ -24,6 +26,7 @@ interface DateSelectorComponent {
     @Module
     interface DateSelectorModule {
         @Binds fun bindSelectorView(impl: DateSelectorView): SelectorView
+        @Binds fun bindDateSelectorPresenter(impl: DateSelectorPresenterImpl): DateSelectorPresenter
     }
 
     @Subcomponent.Builder

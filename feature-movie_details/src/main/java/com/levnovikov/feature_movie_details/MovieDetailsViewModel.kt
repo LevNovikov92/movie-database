@@ -1,5 +1,6 @@
 package com.levnovikov.feature_movie_details
 
+import android.annotation.SuppressLint
 import android.databinding.ObservableBoolean
 import android.databinding.ObservableField
 import android.support.annotation.VisibleForTesting
@@ -46,6 +47,7 @@ class MovieDetailsViewModelImpl @Inject constructor(
     override var errorMessageVisibility = ObservableBoolean(false)
     override var data = ObservableField<MovieDetailsVO>()
 
+    @SuppressLint("VisibleForTests")
     override fun onGetActive() {
         loadDetails()
     }

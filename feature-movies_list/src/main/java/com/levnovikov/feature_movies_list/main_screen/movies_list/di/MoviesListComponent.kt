@@ -1,5 +1,7 @@
 package com.levnovikov.feature_movies_list.main_screen.movies_list.di
 
+import android.support.v7.app.ActionBar
+import com.levnovikov.feature_movies_list.main_screen.NavigatorModule
 import com.levnovikov.feature_movies_list.main_screen.movies_list.ListView
 import com.levnovikov.feature_movies_list.main_screen.movies_list.MoviesListAdapter
 import com.levnovikov.feature_movies_list.main_screen.movies_list.MoviesListAdapterImpl
@@ -23,7 +25,7 @@ import javax.inject.Scope
 annotation class MoviesListScope
 
 @MoviesListScope
-@Subcomponent(modules = [MoviesListComponent.MoviesListModule::class])
+@Subcomponent(modules = [MoviesListComponent.MoviesListModule::class, NavigatorModule::class])
 interface MoviesListComponent {
 
     @Module

@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.DatePickerDialog
 import com.levnovikov.core_common.AsyncHelper
 import com.levnovikov.core_common.defaultError
+import com.levnovikov.core_common.mvp_mvvm.Active
 import com.levnovikov.feature_movies_list.main_screen.DateStreamProvider
 import com.levnovikov.feature_movies_list.main_screen.OnDateSelectedListener
 import com.levnovikov.feature_movies_list.main_screen.date_selector.di.DateSelectorScope
@@ -16,19 +17,24 @@ import javax.inject.Inject
  * Date: 14/3/18.
  */
 
+interface DateSelectorPresenter : Active {
+    fun onClearClicked()
+    fun showDatePickerDialog()
+}
+
 @DateSelectorScope
-class DateSelectorPresenter @Inject constructor(
+class DateSelectorPresenterImpl @Inject constructor(
         private val onDateSelectedListener: OnDateSelectedListener,
         private val activity: Activity,
         private val view: SelectorView,
-        lifecycle: Lifecycle,
-        asyncHelper: AsyncHelper,
-        dateStreamProvider: DateStreamProvider
-) {
+        private val lifecycle: Lifecycle,
+        private val asyncHelper: AsyncHelper,
+        private val dateStreamProvider: DateStreamProvider
+) : DateSelectorPresenter {
 
     private val currentDate: Calendar = GregorianCalendar()
 
-    init {
+    override fun onGetActive() {
         lifecycle.subscribeUntilDestroy(dateStreamProvider.getDateStream()
                 .compose(asyncHelper.observeInMain())
                 .subscribe({
@@ -42,7 +48,7 @@ class DateSelectorPresenter @Inject constructor(
                 }, defaultError))
     }
 
-    fun showDatePickerDialog() {
+    override fun showDatePickerDialog() {
         currentDate.let {
             val dialog = DatePickerDialog(activity, DatePickerDialog.OnDateSetListener { _, y, m, d ->
                 onDateSelectedListener.onDateSelected(GregorianCalendar().apply { set(y, m, d) }.time)
@@ -51,7 +57,7 @@ class DateSelectorPresenter @Inject constructor(
         }
     }
 
-    fun onClearClicked() {
+    override fun onClearClicked() {
         onDateSelectedListener.onDateSelected(null)
     }
 }
