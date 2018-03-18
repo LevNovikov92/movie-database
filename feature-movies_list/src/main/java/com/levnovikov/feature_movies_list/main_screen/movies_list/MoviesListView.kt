@@ -10,6 +10,7 @@ import android.widget.TextView
 import com.levnovikov.core_common.ComponentProvider
 import com.levnovikov.feature_movies_list.R
 import com.levnovikov.feature_movies_list.main_screen.di.MainComponent
+import com.levnovikov.feature_movies_list.main_screen.movies_list.scroll_handler.OnItemClick
 import javax.inject.Inject
 
 

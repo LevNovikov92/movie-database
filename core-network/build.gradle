@@ -19,6 +19,7 @@ dependencies {
     implementation libs.retrofitConverterGson
     implementation libs.okHttp
     implementation libs.okhttpLoggingInterceptor
+    implementation libs.timber
 }
 
 dependencies {

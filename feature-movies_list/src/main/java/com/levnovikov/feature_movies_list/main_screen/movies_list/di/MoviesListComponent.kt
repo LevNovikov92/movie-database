@@ -1,11 +1,11 @@
 package com.levnovikov.feature_movies_list.main_screen.movies_list.di
 
-import com.levnovikov.feature_movies_list.main_screen.DateStreamProvider
-import com.levnovikov.feature_movies_list.main_screen.MoviesScreenRepo
-import com.levnovikov.feature_movies_list.main_screen.OnDateSelectedListener
 import com.levnovikov.feature_movies_list.main_screen.movies_list.ListView
-import com.levnovikov.feature_movies_list.main_screen.movies_list.MovieVOLoader
+import com.levnovikov.feature_movies_list.main_screen.movies_list.MoviesListAdapter
+import com.levnovikov.feature_movies_list.main_screen.movies_list.MoviesListAdapterImpl
+import com.levnovikov.feature_movies_list.main_screen.movies_list.scroll_handler.MovieVOLoader
 import com.levnovikov.feature_movies_list.main_screen.movies_list.MoviesListPresenter
+import com.levnovikov.feature_movies_list.main_screen.movies_list.MoviesListPresenterImpl
 import com.levnovikov.feature_movies_list.main_screen.movies_list.MoviesListView
 import dagger.Binds
 import dagger.BindsInstance
@@ -28,8 +28,9 @@ interface MoviesListComponent {
 
     @Module
     interface MoviesListModule {
-        @Binds fun bindMovieLoader(presenter: MoviesListPresenter): MovieVOLoader
         @Binds fun bindListView(view: MoviesListView): ListView
+        @Binds fun bindPresenter(impl: MoviesListPresenterImpl): MoviesListPresenter
+        @Binds fun bindAdapter(impl: MoviesListAdapterImpl): MoviesListAdapter
     }
 
     @Subcomponent.Builder

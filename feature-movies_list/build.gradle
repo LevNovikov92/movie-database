@@ -26,6 +26,7 @@ dependencies {
     implementation libs.kotlinReflection
     implementation libs.dagger
     implementation libs.guava
+    implementation libs.timber
 }
 
 dependencies {

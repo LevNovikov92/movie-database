@@ -27,6 +27,7 @@ dependencies {
     implementation libs.dagger
     implementation libs.guava
     implementation libs.picasso
+    implementation libs.timber
 }
 
 dependencies {

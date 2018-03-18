@@ -1,13 +1,18 @@
-package com.levnovikov.feature_movies_list.main_screen.movies_list
+package com.levnovikov.feature_movies_list.main_screen.movies_list.scroll_handler
 
+import android.annotation.SuppressLint
 import android.support.annotation.MainThread
-import android.util.Log
+import android.support.annotation.VisibleForTesting
 import com.levnovikov.core_common.AsyncHelper
 import com.levnovikov.core_common.defaultError
 import com.levnovikov.data_movies.entities.PagerMetadata
+import com.levnovikov.feature_movies_list.main_screen.movies_list.ListView
+import com.levnovikov.feature_movies_list.main_screen.movies_list.MovieVO
+import com.levnovikov.feature_movies_list.main_screen.movies_list.MoviesListAdapter
 import com.levnovikov.system_lifecycle.activity.Lifecycle
 import io.reactivex.Single
 import io.reactivex.disposables.Disposable
+import timber.log.Timber
 import java.util.*
 import javax.inject.Inject
 
@@ -32,19 +37,20 @@ class EndlessScrollHandler @Inject constructor(
         private val lifecycle: Lifecycle,
         private val pageLoadingListener: PageLoadingListener,
         private val asyncHelper: AsyncHelper
-) {
+) : ScrollHandler {
 
     companion object {
         private const val MIN_OFFSET = 45 //Make offset bigger to make smooth scrolling
     }
 
-    private var currentPage = -1
-    private var totalPages = -1
-    private var loadingInProgress = false
+    private var currentPage = 0
+    private var totalPages = 1
+    private var loadingInProgress = false //should be modified in mainThread only
 
     private var date: Date? = null
 
-    fun reloadData(date: Date?) {
+    @MainThread
+    override fun reloadData(date: Date?) {
         this.date = date
         resetHandlerState()
         pageLoadingListener.onStartLoading()
@@ -62,13 +68,14 @@ class EndlessScrollHandler @Inject constructor(
     private var pageLoaderDisposable: Disposable? = null
 
     @MainThread
-    private fun loadNextPage() {
-        Log.i(">>>>", "LoadNewData (loading started): currentPage = $currentPage") //TODO improve logging
+    @VisibleForTesting
+    internal fun loadNextPage() {
+        Timber.d(">>>> LoadNewData (loading started): currentPage = $currentPage")
         loadingInProgress = true
         pageLoaderDisposable = movieLoader.loadVO(++currentPage, date)
                 .compose(asyncHelper.asyncCall())
                 .subscribe({
-                    Log.i(">>>>", "LoadNewData (loading finished): currentPage = ${currentPage - 1}") //TODO improve logging
+                    Timber.d(">>>> LoadNewData (loading finished): currentPage = ${currentPage - 1}")
                     adapter.addItems(it.first)
                     totalPages = it.second.totalPages
                     loadingInProgress = false
@@ -78,7 +85,8 @@ class EndlessScrollHandler @Inject constructor(
                 .apply { lifecycle.subscribeUntilDestroy(this) }
     }
 
-    fun onScroll() {
+    @SuppressLint("VisibleForTests")
+    override fun onScroll() {
         if (!loadingInProgress &&
                 currentPage < totalPages &&
                 adapter.itemsCount() - view.getLastVisibleItemPosition() <= MIN_OFFSET) {
@@ -86,5 +94,5 @@ class EndlessScrollHandler @Inject constructor(
         }
     }
 
-    fun getAdapter() = adapter
+    override fun getAdapter() = adapter
 }

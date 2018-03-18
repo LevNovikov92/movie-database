@@ -6,6 +6,7 @@ import com.levnovikov.feature_movie_details.di.MovieDetailsDependencies
 import com.levnovikov.feature_movies_list.main_screen.di.MainComponentDependencies
 import com.levnovikov.movie_database.di.AppComponent
 import com.levnovikov.movie_database.di.DaggerAppComponent
+import timber.log.Timber
 import kotlin.reflect.KClass
 
 /**
@@ -15,10 +16,15 @@ import kotlin.reflect.KClass
 class App : Application(), ComponentProvider {
     override fun onCreate() {
         super.onCreate()
+        setupLogger()
         setupDI()
     }
 
-    lateinit var component: AppComponent
+    private fun setupLogger() {
+        Timber.plant(Timber.DebugTree())
+    }
+
+    private lateinit var component: AppComponent
 
     private fun setupDI() {
         component = DaggerAppComponent.builder()

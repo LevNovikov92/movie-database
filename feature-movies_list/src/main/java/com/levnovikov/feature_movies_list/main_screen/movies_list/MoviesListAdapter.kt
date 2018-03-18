@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.levnovikov.feature_movies_list.R
+import com.levnovikov.feature_movies_list.main_screen.movies_list.scroll_handler.OnItemClick
 import javax.inject.Inject
 
 /**
@@ -11,24 +12,25 @@ import javax.inject.Inject
  * Date: 13/3/18.
  */
 
-class MoviesListAdapter @Inject constructor(
-        private val inflater: LayoutInflater
-) : RecyclerView.Adapter<ViewHolder>() {
+interface MoviesListAdapter {
+    fun addItems(items: List<MovieVO>)
+    fun clearData()
+    fun itemsCount(): Int
+}
 
-    fun addItems(items: List<MovieVO>) {
+class MoviesListAdapterImpl @Inject constructor(
+        private val inflater: LayoutInflater,
+        private val listener: OnItemClick
+) : RecyclerView.Adapter<ViewHolder>(), MoviesListAdapter {
+
+    override fun addItems(items: List<MovieVO>) {
         data.addAll(items)
         notifyDataSetChanged()
     }
 
-    fun clearData() {
+    override fun clearData() {
         data.clear()
         notifyDataSetChanged()
-    }
-
-    private var listener: OnItemClick? = null
-
-    fun setListener(listener: OnItemClick) {
-        this.listener = listener
     }
 
     private val data: MutableList<MovieVO> = mutableListOf()
@@ -43,7 +45,7 @@ class MoviesListAdapter @Inject constructor(
         holder.bind(itemData, listener)
     }
 
-    fun itemsCount(): Int = data.size
+    override fun itemsCount(): Int = data.size
 }
 
 data class MovieVO(val id: Int, val title: String)

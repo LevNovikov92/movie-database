@@ -29,6 +29,7 @@ dependencies {
     implementation libs.retrofit
     implementation libs.okhttpLoggingInterceptor
     implementation libs.picasso
+    implementation libs.timber
 }
 
 dependencies {
