@@ -56,7 +56,7 @@ class MovieDetailsViewModelImpl @Inject constructor(
     internal fun loadDetails() {
         showProgress(true)
         moviesRepo.getMovieDetails(movieId)
-                .compose(asyncHelper.subscribeInIO()) //subscribe and observe in IO since we are using android dataBindings
+                .compose(asyncHelper.asyncCall())
                 .map(MovieDetailsMapper())
                 .subscribe({
                     data.set(it)

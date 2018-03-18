@@ -17,6 +17,7 @@ import javax.inject.Singleton
 
 const val BASE_URL = "BASE_URL"
 const val API_KEY = "API_KEY"
+const val CACHE_SIZE = "CACHE_SIZE"
 
 @Module
 class NetworkModule {
