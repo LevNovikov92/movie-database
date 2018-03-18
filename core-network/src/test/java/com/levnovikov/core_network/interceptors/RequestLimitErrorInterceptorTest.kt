@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit
 class RequestLimitErrorInterceptorTest {
 
     @Volatile
-    var facedException = false
+    private var facedException = false
 
     private lateinit var server: MockWebServer
 

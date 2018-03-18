@@ -10,7 +10,6 @@ import com.levnovikov.feature_movie_details.MovieDetailsViewModelImpl
 import com.levnovikov.feature_movie_details.ViewModelActions
 import com.levnovikov.system_lifecycle.activity.Lifecycle
 import com.squareup.picasso.Picasso
-import dagger.Binds
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module

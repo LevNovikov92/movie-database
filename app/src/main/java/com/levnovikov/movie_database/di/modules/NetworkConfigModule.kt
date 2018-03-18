@@ -26,7 +26,7 @@ class NetworkConfigModule {
     fun provideApiKey() = "7eec4ec73a1da74ccd7307112a55f491"
 
     @Provides
-    fun cacheDirectory(context: Context) = context.cacheDir
+    fun cacheDirectory(context: Context) = context.cacheDir!!
 
     @Provides
     @Named(CACHE_SIZE)

@@ -6,19 +6,13 @@ import com.levnovikov.data_movies.entities.MovieDetails
 import com.levnovikov.system_lifecycle.activity.Lifecycle
 import com.levnovikov.system_lifecycle.activity.LifecycleEvent
 import com.nhaarman.mockito_kotlin.any
-import com.nhaarman.mockito_kotlin.doNothing
 import com.nhaarman.mockito_kotlin.doReturn
 import com.nhaarman.mockito_kotlin.mock
-import com.nhaarman.mockito_kotlin.spy
-import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Single
-import io.reactivex.SingleSource
 import io.reactivex.SingleTransformer
 import io.reactivex.disposables.Disposable
 import org.junit.Assert
 import org.junit.Test
-
-import org.junit.Assert.*
 import java.util.*
 
 /**

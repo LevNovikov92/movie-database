@@ -49,6 +49,7 @@ class EndlessScrollHandler @Inject constructor(
 
     private var date: Date? = null
 
+    @SuppressLint("VisibleForTests")
     @MainThread
     override fun reloadData(date: Date?) {
         this.date = date

@@ -3,9 +3,7 @@ package com.levnovikov.feature_movies_list.main_screen
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Parcelable
-import com.google.common.base.Optional
 import com.levnovikov.core_common.ComponentProvider
-import com.levnovikov.core_common.defaultError
 import com.levnovikov.core_common.getComponent
 import com.levnovikov.feature_movies_list.R
 import com.levnovikov.feature_movies_list.main_screen.di.DaggerMainComponent
