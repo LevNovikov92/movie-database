@@ -7,20 +7,8 @@ android androidConfiguration
 
 dependencies {
     implementation libs.rxJava
-    implementation libs.rxAndroid
     implementation libs.kotlin
     implementation libs.dagger
-    implementation libs.retrofit
-    implementation libs.timber
-}
-
-dependencies {
-    kapt libs.daggerCompiler
-}
-
-dependencies {
-    implementation project(":core-api")
-    implementation project(':core-utils')
 }
 
 dependencies {

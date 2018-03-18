@@ -2,9 +2,9 @@ package com.levnovikov.feature_movie_details.activity_starter
 
 import android.app.Activity
 import android.content.Intent
-import com.levnovikov.core_common.activity_starter.DetailsActivityStarter
 import com.levnovikov.feature_movie_details.MOVIE_ID
 import com.levnovikov.feature_movie_details.MovieDetailsActivity
+import com.levnovikov.intermediate_common.activity_starter.DetailsActivityStarter
 import javax.inject.Inject
 
 /**

@@ -10,11 +10,12 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/core-api" />
-            <option value="$PROJECT_DIR$/core-common" />
             <option value="$PROJECT_DIR$/core-network" />
+            <option value="$PROJECT_DIR$/core-utils" />
             <option value="$PROJECT_DIR$/data-movies" />
             <option value="$PROJECT_DIR$/feature-movie_details" />
             <option value="$PROJECT_DIR$/feature-movies_list" />
+            <option value="$PROJECT_DIR$/intermediate-common" />
             <option value="$PROJECT_DIR$/system-lifecycle" />
           </set>
         </option>

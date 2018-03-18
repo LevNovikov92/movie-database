@@ -1,7 +1,7 @@
 package com.levnovikov.feature_movies_list.main_screen
 
 import android.app.Activity
-import com.levnovikov.core_common.activity_starter.DetailsActivityStarter
+import com.levnovikov.intermediate_common.activity_starter.DetailsActivityStarter
 import dagger.Binds
 import dagger.Module
 import javax.inject.Inject

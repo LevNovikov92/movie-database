@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import com.levnovikov.core_common.AsyncHelper
-import com.levnovikov.core_common.activity_starter.DetailsActivityStarter
 import com.levnovikov.data_movies.MoviesRepo
 import com.levnovikov.feature_movies_list.main_screen.DateStreamProvider
 import com.levnovikov.feature_movies_list.main_screen.MoviesListActivity
@@ -12,6 +11,7 @@ import com.levnovikov.feature_movies_list.main_screen.MoviesScreenRepo
 import com.levnovikov.feature_movies_list.main_screen.OnDateSelectedListener
 import com.levnovikov.feature_movies_list.main_screen.date_selector.di.DateSelectorComponent
 import com.levnovikov.feature_movies_list.main_screen.movies_list.di.MoviesListComponent
+import com.levnovikov.intermediate_common.activity_starter.DetailsActivityStarter
 import com.levnovikov.system_lifecycle.activity.Lifecycle
 import dagger.BindsInstance
 import dagger.Component

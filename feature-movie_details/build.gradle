@@ -37,7 +37,8 @@ dependencies {
 
 dependencies {
     implementation project(":data-movies")
-    implementation project(":core-common")
+    implementation project(':core-utils')
+    implementation project(':intermediate-common')
     implementation project(":system-lifecycle")
 }
 

@@ -43,7 +43,8 @@ dependencies {
     implementation project(":data-movies")
     implementation project(":feature-movies_list")
     implementation project(":feature-movie_details")
-    implementation project(":core-common")
+    implementation project(':core-utils')
+    implementation project(':intermediate-common')
 }
 
 dependencies {
