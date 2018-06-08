@@ -1,16 +1,13 @@
 package com.levnovikov.feature_movie_details
 
 import android.annotation.SuppressLint
-import android.databinding.ObservableBoolean
-import android.databinding.ObservableField
-import android.support.annotation.VisibleForTesting
 import com.levnovikov.core_common.AsyncHelper
 import com.levnovikov.data_movies.MoviesRepo
 import com.levnovikov.data_movies.entities.MovieDetails
 import com.levnovikov.feature_movie_details.di.MovieDetailsScope
 import com.levnovikov.system_lifecycle.activity.Lifecycle
 import io.reactivex.functions.Function
-import java.util.*
+import java.util.Date
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -23,10 +20,10 @@ const val MOVIE_ID = "MOVIE_ID"
 
 //Interface was introduced to hide VM methods and ban calls from xml
 interface MovieDetailsViewModel {
-    var progressVisibility: ObservableBoolean
-    var detailsVisibility: ObservableBoolean
-    var errorMessageVisibility: ObservableBoolean
-    var data: ObservableField<MovieDetailsVO>
+//    var progressVisibility: ObservableBoolean
+//    var detailsVisibility: ObservableBoolean
+//    var errorMessageVisibility: ObservableBoolean
+//    var data: ObservableField<MovieDetailsVO>
 }
 
 //Interface was introduced to allow to start VM from activity
@@ -41,42 +38,42 @@ class MovieDetailsViewModelImpl @Inject constructor(
         private val asyncHelper: AsyncHelper,
         @Named(MOVIE_ID) private val movieId: Int
 ) : MovieDetailsViewModel, ViewModelActions {
-
-    override var progressVisibility = ObservableBoolean(false)
-    override var detailsVisibility = ObservableBoolean(false)
-    override var errorMessageVisibility = ObservableBoolean(false)
-    override var data = ObservableField<MovieDetailsVO>()
+//
+//    override var progressVisibility = ObservableBoolean(false)
+//    override var detailsVisibility = ObservableBoolean(false)
+//    override var errorMessageVisibility = ObservableBoolean(false)
+//    override var data = ObservableField<MovieDetailsVO>()
 
     @SuppressLint("VisibleForTests")
     override fun onGetActive() {
-        loadDetails()
+//        loadDetails()
     }
-
-    @VisibleForTesting
-    internal fun loadDetails() {
-        showProgress(true)
-        moviesRepo.getMovieDetails(movieId)
-                .compose(asyncHelper.asyncCall())
-                .map(MovieDetailsMapper())
-                .subscribe({
-                    data.set(it)
-                    showProgress(false)
-                }, { showError() })
-                .let { lifecycle.subscribeUntilDestroy(it) } //dispose observable on activity onDestroy
-    }
-
-    @VisibleForTesting
-    internal fun showProgress(show: Boolean) {
-        progressVisibility.set(show)
-        detailsVisibility.set(!show)
-        errorMessageVisibility.set(false)
-    }
-
-    @VisibleForTesting
-    internal fun showError() {
-        showProgress(true)
-        errorMessageVisibility.set(true)
-    }
+//
+//    @VisibleForTesting
+//    internal fun loadDetails() {
+//        showProgress(true)
+//        moviesRepo.getMovieDetails(movieId)
+//                .compose(asyncHelper.asyncCall())
+//                .map(MovieDetailsMapper())
+//                .subscribe({
+//                    data.set(it)
+//                    showProgress(false)
+//                }, { showError() })
+//                .let { lifecycle.subscribeUntilDestroy(it) } //dispose observable on activity onDestroy
+//    }
+//
+//    @VisibleForTesting
+//    internal fun showProgress(show: Boolean) {
+//        progressVisibility.set(show)
+//        detailsVisibility.set(!show)
+//        errorMessageVisibility.set(false)
+//    }
+//
+//    @VisibleForTesting
+//    internal fun showError() {
+//        showProgress(true)
+//        errorMessageVisibility.set(true)
+//    }
 }
 
 data class MovieDetailsVO(

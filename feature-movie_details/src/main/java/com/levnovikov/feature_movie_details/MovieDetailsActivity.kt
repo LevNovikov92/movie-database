@@ -1,10 +1,7 @@
 package com.levnovikov.feature_movie_details
 
-import android.databinding.DataBindingUtil
-import android.databinding.Observable
 import android.os.Bundle
 import com.levnovikov.core_common.ComponentProvider
-import com.levnovikov.feature_movie_details.databinding.ActivityMovieDetailsBinding
 import com.levnovikov.feature_movie_details.di.DaggerMovieDetailsComponent
 import com.levnovikov.feature_movie_details.di.MovieDetailsDependencies
 import com.levnovikov.system_lifecycle.activity.LifecycleActivity
@@ -29,18 +26,18 @@ class MovieDetailsActivity : LifecycleActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupDI()
-        setupBinding()
-        setupImageLoader()
+//        setupBinding()
+//        setupImageLoader()
         vmActions.onGetActive()
     }
 
-    private fun setupImageLoader() {
-        vm.data.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
-            override fun onPropertyChanged(p0: Observable?, p1: Int) {
-                picasso.load(vm.data.get().imgUrl).into(binding.imageView)
-            }
-        })
-    }
+//    private fun setupImageLoader() {
+//        vm.data.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
+//            override fun onPropertyChanged(p0: Observable?, p1: Int) {
+//                picasso.load(vm.data.get().imgUrl).into(binding.imageView)
+//            }
+//        })
+//    }
 
     private fun setupDI() {
         applicationContext.let {
@@ -56,10 +53,10 @@ class MovieDetailsActivity : LifecycleActivity() {
         }
     }
 
-    private lateinit var binding: ActivityMovieDetailsBinding
+//    private lateinit var binding: ActivityMovieDetailsBinding
 
-    private fun setupBinding() {
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_movie_details)
-        binding.vm = vm
-    }
+//    private fun setupBinding() {
+//        binding = DataBindingUtil.setContentView(this, R.layout.activity_movie_details)
+//        binding.vm = vm
+//    }
 }

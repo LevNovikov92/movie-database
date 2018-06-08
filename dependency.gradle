@@ -71,7 +71,7 @@ ext {
     ]
 
     aptLibs = [
-            databinding               : "com.android.databinding:compiler:$gradlePluginVersion"
+//            databinding               : "com.android.databinding:compiler:$gradlePluginVersion"
     ]
 
     testLibs = [

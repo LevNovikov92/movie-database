@@ -45,6 +45,10 @@ class MoviesListActivity : LifecycleActivity(), ComponentProvider {
         component.inject(this)
     }
 
+   private  fun doNothing() {
+
+    }
+
     @Suppress("UNCHECKED_CAST")
     override fun <C : Any> getComponent(clazz: KClass<C>): C? =
             when(clazz) {
