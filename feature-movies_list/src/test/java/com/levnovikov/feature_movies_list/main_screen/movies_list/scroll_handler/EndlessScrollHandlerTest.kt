@@ -2,9 +2,12 @@ package com.levnovikov.feature_movies_list.main_screen.movies_list.scroll_handle
 
 import com.levnovikov.core_common.AsyncHelper
 import com.levnovikov.data_movies.entities.PagerMetadata
-import com.levnovikov.feature_movies_list.main_screen.movies_list.ListView
-import com.levnovikov.feature_movies_list.main_screen.movies_list.MovieVO
-import com.levnovikov.feature_movies_list.main_screen.movies_list.MoviesListAdapter
+import com.levnovikov.feature_list_of_films.movies_list.ListView
+import com.levnovikov.feature_list_of_films.movies_list.MovieVO
+import com.levnovikov.feature_list_of_films.movies_list.MoviesListAdapter
+import com.levnovikov.feature_list_of_films.movies_list.scroll_handler.EndlessScrollHandler
+import com.levnovikov.feature_list_of_films.movies_list.scroll_handler.MovieVOLoader
+import com.levnovikov.feature_list_of_films.movies_list.scroll_handler.PageLoadingListener
 import com.levnovikov.system_lifecycle.activity.Lifecycle
 import com.levnovikov.system_lifecycle.activity.LifecycleEvent
 import com.nhaarman.mockito_kotlin.any

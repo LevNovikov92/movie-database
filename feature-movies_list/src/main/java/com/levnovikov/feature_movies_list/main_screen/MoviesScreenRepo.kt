@@ -1,6 +1,8 @@
 package com.levnovikov.feature_movies_list.main_screen
 
 import com.google.common.base.Optional
+import com.levnovikov.feature_date_selector.date_selector.dependencies.DateStreamProvider
+import com.levnovikov.feature_date_selector.date_selector.dependencies.OnDateSelectedListener
 import com.levnovikov.feature_movies_list.main_screen.di.MainScope
 import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject
@@ -28,11 +30,3 @@ class MoviesScreenRepo @Inject constructor(dateByDefault: Date?) : OnDateSelecte
     override fun getLatestValue(): Date? = latestValue
 }
 
-interface OnDateSelectedListener {
-    fun onDateSelected(date: Date?)
-}
-
-interface DateStreamProvider {
-    fun getDateStream(): Observable<Optional<Date>>
-    fun getLatestValue(): Date?
-}

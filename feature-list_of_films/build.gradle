@@ -33,8 +33,6 @@ dependencies {
     implementation project(':core-utils')
     implementation project(':intermediate-common')
     implementation project(":system-lifecycle")
-    implementation project(":feature-date-selector")
-    implementation project(":feature-list_of_films")
     implementation project(":res-movies_list")
 }
 

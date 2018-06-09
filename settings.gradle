@@ -3,7 +3,7 @@
  *
  * Module can have any kind of dependencies since resolving DI
  */
-include ':app'
+include ':app', ':feature-date-selector', ':res-movies_list', ':feature-list_of_films'
 
 /**
  * feature-level modules contain feature business logic, UI and specific domain related repositories.
