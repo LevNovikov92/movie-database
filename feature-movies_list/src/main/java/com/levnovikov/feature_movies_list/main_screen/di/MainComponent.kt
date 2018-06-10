@@ -1,22 +1,18 @@
 package com.levnovikov.feature_movies_list.main_screen.di
 
 import android.app.Activity
-import android.content.Context
 import android.view.LayoutInflater
-import com.levnovikov.core_common.AsyncHelper
-import com.levnovikov.data_movies.MoviesRepo
 import com.levnovikov.feature_date_selector.date_selector.dependencies.DateStreamProvider
 import com.levnovikov.feature_date_selector.date_selector.dependencies.OnDateSelectedListener
 import com.levnovikov.feature_date_selector.date_selector.di.DateSelectorComponent
 import com.levnovikov.feature_list_of_films.movies_list.di.MoviesListComponent
 import com.levnovikov.feature_movies_list.main_screen.MoviesListActivity
 import com.levnovikov.feature_movies_list.main_screen.MoviesScreenRepo
-import com.levnovikov.intermediate_common.activity_starter.DetailsActivityStarter
 import com.levnovikov.system_lifecycle.activity.Lifecycle
 import dagger.BindsInstance
-import dagger.Component
 import dagger.Module
 import dagger.Provides
+import dagger.Subcomponent
 import java.util.*
 import javax.inject.Scope
 
@@ -29,15 +25,15 @@ import javax.inject.Scope
 @Retention(AnnotationRetention.RUNTIME)
 annotation class MainScope
 
-interface MainComponentDependencies {
-    fun context(): Context
-    fun moviesRepo(): MoviesRepo
-    fun asyncHelper(): AsyncHelper
-    fun detailsActivityStarter(): DetailsActivityStarter
-}
+//interface MainComponentDependencies {
+//    fun context(): Context
+//    fun moviesRepo(): MoviesRepo
+//    fun asyncHelper(): AsyncHelper
+//    fun detailsActivityStarter(): DetailsActivityStarter
+//}
 
 @MainScope
-@Component(dependencies = [MainComponentDependencies::class], modules = [
+@Subcomponent(modules = [
     MainComponent.MainModule::class
 ])
 interface MainComponent {
@@ -61,10 +57,10 @@ interface MainComponent {
         fun provideLifecycle(activity: MoviesListActivity): Lifecycle = activity
     }
 
-    @Component.Builder
+    @Subcomponent.Builder
     interface Builder {
         fun build(): MainComponent
-        fun dependency(dependency: MainComponentDependencies): Builder
+//        fun dependency(dependency: MainComponentDependencies): Builder
 
         @BindsInstance
         fun activity(activity: MoviesListActivity): Builder

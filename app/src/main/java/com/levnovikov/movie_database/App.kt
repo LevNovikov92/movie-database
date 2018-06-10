@@ -3,7 +3,7 @@ package com.levnovikov.movie_database
 import android.app.Application
 import com.levnovikov.core_common.ComponentProvider
 import com.levnovikov.feature_movie_details.di.MovieDetailsDependencies
-import com.levnovikov.feature_movies_list.main_screen.di.MainComponentDependencies
+import com.levnovikov.feature_movies_list.main_screen.di.MainComponent
 import com.levnovikov.movie_database.di.AppComponent
 import com.levnovikov.movie_database.di.DaggerAppComponent
 import timber.log.Timber
@@ -35,7 +35,7 @@ class App : Application(), ComponentProvider {
     @Suppress("UNCHECKED_CAST")
     override fun <C : Any> getComponent(clazz: KClass<C>): C? =
             when(clazz) {
-                MainComponentDependencies::class -> component as C
+                MainComponent.Builder::class -> component as C
                 MovieDetailsDependencies::class -> component as C
                 else -> throw UnsupportedOperationException("App don't implement interface ${clazz.simpleName}")
             }

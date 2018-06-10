@@ -36,6 +36,8 @@ dependencies {
     implementation project(":core-api")
     implementation project(":data-movies")
     implementation project(":feature-movies_list")
+    implementation project(":feature-list_of_films")
+    implementation project(":feature-date-selector")
     implementation project(":feature-movie_details")
     implementation project(':core-utils')
     implementation project(':intermediate-common')

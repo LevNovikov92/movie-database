@@ -5,7 +5,7 @@ import com.levnovikov.core_common.AsyncHelper
 import com.levnovikov.data_movies.MoviesRepo
 import com.levnovikov.data_movies.di.MovieDataModule
 import com.levnovikov.feature_movie_details.di.MovieDetailsDependencies
-import com.levnovikov.feature_movies_list.main_screen.di.MainComponentDependencies
+import com.levnovikov.feature_movies_list.main_screen.di.MainComponent
 import com.levnovikov.movie_database.di.modules.ActivityStarterModule
 import com.levnovikov.movie_database.di.modules.AsyncHelperModule
 import com.levnovikov.movie_database.di.modules.BASE_IMAGE_URL
@@ -35,7 +35,7 @@ const val APP_CONTEXT = "APP_CONTEXT"
     PicassoModule::class,
     ActivityStarterModule::class
 ])
-interface AppComponent : MainComponentDependencies, MovieDetailsDependencies {
+interface AppComponent : MovieDetailsDependencies {
 
     @Component.Builder
     interface Builder {
@@ -52,7 +52,7 @@ interface AppComponent : MainComponentDependencies, MovieDetailsDependencies {
     override fun picasso(): Picasso
 }
 
-@Module
+@Module(subcomponents = [MainComponent::class])
 class AppModule {
 
     @Provides

@@ -6,7 +6,6 @@ import android.os.Parcelable
 import com.levnovikov.core_common.ComponentProvider
 import com.levnovikov.core_common.getComponent
 import com.levnovikov.feature_movies_list.R
-import com.levnovikov.feature_movies_list.main_screen.di.DaggerMainComponent
 import com.levnovikov.feature_movies_list.main_screen.di.MainComponent
 import com.levnovikov.system_lifecycle.activity.LifecycleActivity
 import kotlinx.android.parcel.Parcelize
@@ -37,10 +36,10 @@ class MoviesListActivity : LifecycleActivity(), ComponentProvider {
     private lateinit var component: MainComponent
 
     private fun setupDI(date: Date?) {
-        component = DaggerMainComponent.builder()
+        component = application.getComponent<MainComponent.Builder>()
                 .activity(this)
                 .dateByDefault(date)
-                .dependency(application.getComponent())
+//                .dependency(application.getComponent())
                 .build()
         component.inject(this)
     }
