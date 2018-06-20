@@ -8,7 +8,7 @@ import com.levnovikov.data_movies.MoviesRepo
 import com.levnovikov.feature_date_selector.date_selector.dependencies.DateStreamProvider
 import com.levnovikov.feature_date_selector.date_selector.dependencies.OnDateSelectedListener
 import com.levnovikov.feature_date_selector.date_selector.di.DateSelectorComponent
-import com.levnovikov.feature_list_of_films.movies_list.di.MoviesListComponent
+import com.levnovikov.feature_list_of_films_interface.MoviesListDependency
 import com.levnovikov.feature_movies_list.main_screen.MoviesListActivity
 import com.levnovikov.feature_movies_list.main_screen.MoviesScreenRepo
 import com.levnovikov.intermediate_common.activity_starter.DetailsActivityStarter
@@ -40,9 +40,9 @@ interface MainComponentDependencies {
 @Component(dependencies = [MainComponentDependencies::class], modules = [
     MainComponent.MainModule::class
 ])
-interface MainComponent {
+interface MainComponent : MoviesListDependency {
 
-    @Module(subcomponents = [MoviesListComponent::class, DateSelectorComponent::class])
+    @Module(subcomponents = [DateSelectorComponent::class])
     class MainModule {
         @Provides
         fun provideLayoutInflater(activity: MoviesListActivity): LayoutInflater =
@@ -75,6 +75,5 @@ interface MainComponent {
 
     fun inject(moviesListActivity: MoviesListActivity)
 
-    fun moviesListBuilder(): MoviesListComponent.Builder
     fun dateSelectorBuilder(): DateSelectorComponent.Builder
 }

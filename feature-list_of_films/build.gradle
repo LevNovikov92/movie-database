@@ -34,6 +34,7 @@ dependencies {
     implementation project(':intermediate-common')
     implementation project(":system-lifecycle")
     implementation project(":res-movies_list")
+    implementation project(":feature-list_of_films_interface")
 }
 
 dependencies {

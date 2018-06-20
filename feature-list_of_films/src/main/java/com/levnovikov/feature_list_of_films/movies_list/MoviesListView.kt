@@ -9,8 +9,9 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import com.levnovikov.core_common.ComponentProvider
 import com.levnovikov.feature_list_of_films.R
-import com.levnovikov.feature_list_of_films.movies_list.di.MoviesListComponent
+import com.levnovikov.feature_list_of_films.movies_list.di.DaggerMoviesListComponent
 import com.levnovikov.feature_list_of_films.movies_list.scroll_handler.OnItemClick
+import com.levnovikov.feature_list_of_films_interface.MoviesListDependency
 import javax.inject.Inject
 
 
@@ -56,14 +57,13 @@ class MoviesListView @JvmOverloads constructor(
     }
 
     private fun setupDI() {
-        context.let{
+        context.let {
             if (it is ComponentProvider) {
-                it.getComponent(MoviesListComponent.Builder::class)?.let {
-                    it
-                            .view(this)
-                            .build().apply {
-                                this.inject(this@MoviesListView)
-                            }
+                DaggerMoviesListComponent.builder()
+                        .view(this)
+                        .dependency(it.getComponent(MoviesListDependency::class)!!)
+                        .build().apply {
+                    this.inject(this@MoviesListView)
                 }
             }
         }

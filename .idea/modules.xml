@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/data-movies/data-movies.iml" filepath="$PROJECT_DIR$/data-movies/data-movies.iml" />
       <module fileurl="file://$PROJECT_DIR$/feature-date-selector/feature-date-selector.iml" filepath="$PROJECT_DIR$/feature-date-selector/feature-date-selector.iml" />
       <module fileurl="file://$PROJECT_DIR$/feature-list_of_films/feature-list_of_films.iml" filepath="$PROJECT_DIR$/feature-list_of_films/feature-list_of_films.iml" />
+      <module fileurl="file://$PROJECT_DIR$/feature-list_of_films_interface/feature-list_of_films_interface.iml" filepath="$PROJECT_DIR$/feature-list_of_films_interface/feature-list_of_films_interface.iml" />
       <module fileurl="file://$PROJECT_DIR$/feature-movie_details/feature-movie-details.iml" filepath="$PROJECT_DIR$/feature-movie_details/feature-movie-details.iml" />
       <module fileurl="file://$PROJECT_DIR$/feature-movie_details/feature-movie_details.iml" filepath="$PROJECT_DIR$/feature-movie_details/feature-movie_details.iml" />
       <module fileurl="file://$PROJECT_DIR$/feature-movies_list/feature-movies_list.iml" filepath="$PROJECT_DIR$/feature-movies_list/feature-movies_list.iml" />

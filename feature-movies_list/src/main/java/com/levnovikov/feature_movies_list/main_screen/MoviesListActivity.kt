@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Parcelable
 import com.levnovikov.core_common.ComponentProvider
 import com.levnovikov.core_common.getComponent
+import com.levnovikov.feature_list_of_films_interface.MoviesListDependency
 import com.levnovikov.feature_movies_list.R
 import com.levnovikov.feature_movies_list.main_screen.di.DaggerMainComponent
 import com.levnovikov.feature_movies_list.main_screen.di.MainComponent
@@ -52,6 +53,7 @@ class MoviesListActivity : LifecycleActivity(), ComponentProvider {
     @Suppress("UNCHECKED_CAST")
     override fun <C : Any> getComponent(clazz: KClass<C>): C? =
             when(clazz) {
+                MoviesListDependency::class -> component as C
                 MainComponent::class -> component as C
                 else -> throw UnsupportedOperationException("Component ${clazz.simpleName} not found")
             }

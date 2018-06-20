@@ -7,10 +7,11 @@ import com.levnovikov.feature_list_of_films.movies_list.MoviesListPresenter
 import com.levnovikov.feature_list_of_films.movies_list.MoviesListPresenterImpl
 import com.levnovikov.feature_list_of_films.movies_list.MoviesListView
 import com.levnovikov.feature_list_of_films.movies_list.NavigatorModule
+import com.levnovikov.feature_list_of_films_interface.MoviesListDependency
 import dagger.Binds
 import dagger.BindsInstance
+import dagger.Component
 import dagger.Module
-import dagger.Subcomponent
 import javax.inject.Scope
 
 /**
@@ -23,7 +24,8 @@ import javax.inject.Scope
 annotation class MoviesListScope
 
 @MoviesListScope
-@Subcomponent(modules = [MoviesListComponent.MoviesListModule::class, NavigatorModule::class])
+@Component(dependencies = [MoviesListDependency::class],
+        modules = [MoviesListComponent.MoviesListModule::class, NavigatorModule::class])
 interface MoviesListComponent {
 
     @Module
@@ -33,9 +35,10 @@ interface MoviesListComponent {
         @Binds fun bindAdapter(impl: MoviesListAdapterImpl): MoviesListAdapter
     }
 
-    @Subcomponent.Builder
+    @Component.Builder
     interface Builder {
         fun build(): MoviesListComponent
+        fun dependency(dependency: MoviesListDependency): Builder
 
         @BindsInstance
         fun view(view: MoviesListView): Builder

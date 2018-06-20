@@ -1,0 +1,15 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android androidConfiguration
+
+dependencies {
+    implementation libs.kotlin
+}
+
+dependencies {
+    implementation project(":data-movies")
+    implementation project(':core-utils')
+    implementation project(':intermediate-common')
+    implementation project(":system-lifecycle")
+}

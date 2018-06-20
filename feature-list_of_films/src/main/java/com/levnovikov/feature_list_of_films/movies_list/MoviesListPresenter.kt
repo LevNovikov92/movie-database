@@ -70,7 +70,7 @@ class MoviesListPresenterImpl @Inject constructor(
         view.hideProgress()
     }
 
-    private fun doNothing() {
+    private fun doNothingElseAgain() {
 
     }
 }
