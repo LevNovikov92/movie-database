@@ -9,17 +9,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/core-api" />
-            <option value="$PROJECT_DIR$/core-network" />
-            <option value="$PROJECT_DIR$/core-utils" />
-            <option value="$PROJECT_DIR$/data-movies" />
-            <option value="$PROJECT_DIR$/feature-date-selector" />
-            <option value="$PROJECT_DIR$/feature-list_of_films" />
-            <option value="$PROJECT_DIR$/feature-list_of_films_interface" />
-            <option value="$PROJECT_DIR$/feature-movie_details" />
-            <option value="$PROJECT_DIR$/feature-movies_list" />
-            <option value="$PROJECT_DIR$/intermediate-common" />
-            <option value="$PROJECT_DIR$/res-movies_list" />
             <option value="$PROJECT_DIR$/system-lifecycle" />
           </set>
         </option>

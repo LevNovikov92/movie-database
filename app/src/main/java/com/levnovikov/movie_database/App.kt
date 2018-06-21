@@ -2,10 +2,10 @@ package com.levnovikov.movie_database
 
 import android.app.Application
 import com.levnovikov.core_common.ComponentProvider
-import com.levnovikov.feature_movie_details.di.MovieDetailsDependencies
-import com.levnovikov.feature_movies_list.main_screen.di.MainComponentDependencies
 import com.levnovikov.movie_database.di.AppComponent
 import com.levnovikov.movie_database.di.DaggerAppComponent
+import feature_movie_details.di.MovieDetailsDependencies
+import main_screen.di.MainComponentDependencies
 import timber.log.Timber
 import kotlin.reflect.KClass
 

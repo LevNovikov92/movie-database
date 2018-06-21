@@ -1,10 +1,10 @@
 package com.levnovikov.movie_database.di.modules
 
 import android.content.Context
-import com.levnovikov.core_network.API_KEY
-import com.levnovikov.core_network.BASE_URL
-import com.levnovikov.core_network.CACHE_SIZE
-import com.levnovikov.core_network.NetworkModule
+import core_network.API_KEY
+import core_network.BASE_URL
+import core_network.CACHE_SIZE
+import core_network.NetworkModule
 import dagger.Module
 import dagger.Provides
 import javax.inject.Named

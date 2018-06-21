@@ -1,4 +1,0 @@
-<resources>
-    <string name="app_name">feature-movie-details</string>
-    <string name="details_loading_error">Loading error, please try again later</string>
-</resources>

@@ -2,10 +2,6 @@ package com.levnovikov.movie_database.di
 
 import android.content.Context
 import com.levnovikov.core_common.AsyncHelper
-import com.levnovikov.data_movies.MoviesRepo
-import com.levnovikov.data_movies.di.MovieDataModule
-import com.levnovikov.feature_movie_details.di.MovieDetailsDependencies
-import com.levnovikov.feature_movies_list.main_screen.di.MainComponentDependencies
 import com.levnovikov.movie_database.di.modules.ActivityStarterModule
 import com.levnovikov.movie_database.di.modules.AsyncHelperModule
 import com.levnovikov.movie_database.di.modules.BASE_IMAGE_URL
@@ -16,6 +12,10 @@ import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
 import dagger.Provides
+import data_movies.MoviesRepo
+import data_movies.di.MovieDataModule
+import feature_movie_details.di.MovieDetailsDependencies
+import main_screen.di.MainComponentDependencies
 import javax.inject.Named
 import javax.inject.Singleton
 

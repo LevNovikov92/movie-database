@@ -21,9 +21,12 @@ dependencies {
     implementation libs.dagger
     implementation libs.gson
     implementation libs.retrofit
+    implementation libs.retrofitRxjavaAdapter
+    implementation libs.retrofitConverterGson
     implementation libs.okhttpLoggingInterceptor
     implementation libs.picasso
     implementation libs.timber
+    implementation libs.guava
 }
 
 dependencies {
@@ -31,15 +34,6 @@ dependencies {
     kapt aptLibs.databinding
 }
 
-dependencies {
-    implementation project(":core-network")
-    implementation project(":core-api")
-    implementation project(":data-movies")
-    implementation project(":feature-movies_list")
-    implementation project(":feature-movie_details")
-    implementation project(':core-utils')
-    implementation project(':intermediate-common')
-}
 
 dependencies {
     testImplementation testLibs.jUnit

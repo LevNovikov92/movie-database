@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">movie-database</string>
+    <string name="all_dates">All dates</string>
+    <string name="details_loading_error">Loading error, please try again later</string>
 </resources>
